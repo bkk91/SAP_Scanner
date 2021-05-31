@@ -26,7 +26,7 @@
 <details>  
 <summary> <b> 2. 핵심가치 & 목표 </b> </summary>
 <div markdown="1"> 
-<img src="./img/contents1_2.png"  width="800"> 
+<img src="./img/contents1_2_1.png"  width="800"> 
 </div>
 </details>
 
@@ -133,10 +133,10 @@
 <img src="./img/contents6_5.png"  width="800"> 
 <img src="./img/contents6_6.png"  width="800"> 
 <img src="./img/contents6_7.png"  width="800"> 
-<img src="./img/contents6_8.png"  width="800"> 
+<img src="./img/contents6_8_1.png"  width="800"> 
 <img src="./img/contents6_9.png"  width="800"> 
 <img src="./img/contents6_10.png"  width="800"> 
-<img src="./img/contents6_11.png"  width="800"> 
+<img src="./img/contents6_11_1.png"  width="800"> 
 <img src="./img/contents6_12.png"  width="800"> 
 <img src="./img/contents6_13.png"  width="800"> 
 <img src="./img/contents6_14.png"  width="800"> 
