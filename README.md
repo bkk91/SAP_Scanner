@@ -12,23 +12,73 @@
 - 내용 : 비트컴퓨터 국비 교육과정에서 진행하는 웹 최종프로젝트 기획 및 구현.
 
 ---
-### 목차 (Project plan)
+## 프로젝트 프랜 (Project plan)
 
-##### 제 1장 웹사이트 개요
+### 제 1장 웹사이트 개요
 
-1. 배경
-2. 핵심가치 & 목표
+<details>
+<summary> <b> 1. 배경 </b> </summary>
+<div markdown="1"> 
+<img src="./img/contents1_1.png"  width="800"> 
+</div>
+</details>
+<details>
+  
+<summary> <b> 2. 핵심가치 & 목표 </b> </summary>
+<div markdown="1"> 
+<img src="./img/contents1_2.png"  width="800"> 
+</div>
+</details>
 
-##### 제 2장 환경 분석
-1. 시장 환경 및 분석
-2. SWOT 분석
-3. 특성 및 차별성
+### 제 2장 환경 분석
 
-##### 제 3장 프로젝트 구성
-1. 기술스택
-2. 프로젝트 트랙커
+<details>
+<summary> <b> 1. 시장 환경 및 분석 </b> </summary>
+<div markdown="1"> 
+<img src="./img/contents2_1.png"  width="800"> 
+<img src="./img/contents2_2.png"  width="800"> 
+<img src="./img/contents2_3.png"  width="800"> 
+</div>
+</details>
+<details>
 
-##### 제 4장 웹페이지 설계
+<details>
+<summary> <b> 2. SWOT 분석 </b> </summary>
+<div markdown="1"> 
+<img src="./img/contents2_4.png"  width="800"> 
+</div>
+</details>
+<details>
+  
+<details>
+<summary> <b> 3. 특성 및 차별성 </b> </summary>
+<div markdown="1"> 
+<img src="./img/contents2_5.png"  width="800">
+<img src="./img/contents2_6.png"  width="800">
+<img src="./img/contents2_7.png"  width="800">
+</div>
+</details>
+<details>
+
+### 제 3장 프로젝트 구성
+  
+<details>
+<summary> <b> 1. 기술스택 </b> </summary>
+<div markdown="1"> 
+<img src="./img/contents3_1.png"  width="800"> 
+</div>
+</details>
+<details>
+  
+<details>
+<summary> <b> 2. 프로젝트 트랙커 </b> </summary>
+<div markdown="1"> 
+<img src="./img/contents3_2.png"  width="800"> 
+</div>
+</details>
+<details>
+
+### 제 4장 웹페이지 설계
 1. 메인페이지 및 컨셉 구성
 2. 기능 페이지 구현
 
