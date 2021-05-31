@@ -22,8 +22,8 @@
 <img src="./img/contents1_1.png"  width="800"> 
 </div>
 </details>
-<details>
-  
+
+<details>  
 <summary> <b> 2. 핵심가치 & 목표 </b> </summary>
 <div markdown="1"> 
 <img src="./img/contents1_2.png"  width="800"> 
@@ -40,7 +40,6 @@
 <img src="./img/contents2_3.png"  width="800"> 
 </div>
 </details>
-<details>
 
 <details>
 <summary> <b> 2. SWOT 분석 </b> </summary>
@@ -48,8 +47,7 @@
 <img src="./img/contents2_4.png"  width="800"> 
 </div>
 </details>
-<details>
-  
+
 <details>
 <summary> <b> 3. 특성 및 차별성 </b> </summary>
 <div markdown="1"> 
@@ -58,7 +56,6 @@
 <img src="./img/contents2_7.png"  width="800">
 </div>
 </details>
-<details>
 
 ### 제 3장 프로젝트 구성
   
@@ -68,7 +65,6 @@
 <img src="./img/contents3_1.png"  width="800"> 
 </div>
 </details>
-<details>
   
 <details>
 <summary> <b> 2. 프로젝트 트랙커 </b> </summary>
@@ -76,7 +72,6 @@
 <img src="./img/contents3_2.png"  width="800"> 
 </div>
 </details>
-<details>
 
 ### 제 4장 웹페이지 설계
 1. 메인페이지 및 컨셉 구성
