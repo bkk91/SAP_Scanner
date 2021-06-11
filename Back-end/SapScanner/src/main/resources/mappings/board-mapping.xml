@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 네임스페이스 이름은 DAO와 동일하게 설정해줘야 한다. -->
+
+<mapper namespace="BoardDAO">
+   
+   <insert id="insertBoard" parameterType="board">
+      <![CDATA[
+      INSERT INTO BOARD(SEQ, TITLE, WRITER, CONTENT)
+      VALUES((SELECT NVL(MAX(SEQ),0) +1  FROM BOARD), #{title}, #{writer}, #{content})
+      ]]>
+   </insert>
+   
+   <update id="updateBoard">
+      <![CDATA[
+      UPDATE BOARD 
+      SET TITLE = #{title}, 
+         CONTENT = #{content} 
+      WHERE SEQ = #{seq}
+      ]]>
+   </update>
+   
+   <delete id="deleteBoard">
+      <![CDATA[
+      DELETE BOARD
+      WHERE SEQ = #{SEQ}
+      ]]>
+   </delete>
+   
+   <select id="getBoard" resultType="board">
+      <![CDATA[
+      SELECT * FROM BOARD 
+      WHERE SEQ = #{seq}
+      ]]>
+   </select>
+   
+   <select id="getBoardList" resultType="board">
+      <![CDATA[
+      SELECT * FROM BOARD
+      WHERE TITLE LIKE '%' || #{SearchKeyword}|| '%'
+      ORDER BY SEQ DESC
+      ]]>
+   </select>
+   
+   <select id="getBoardList_T" resultType="boardResult">
+      <![CDATA[
+      SELECT * FROM BOARD
+      WHERE TITLE LIKE '%' || #{SearchKeyword}|| '%'
+      ORDER BY SEQ DESC
+      ]]>
+   </select>
+   
+   <select id="getBoardList_C" resultType="boardResult">
+      <![CDATA[
+      SELECT * FROM BOARD
+      WHERE CONTENT LIKE '%' || #{SearchKeyword}|| '%'
+      ORDER BY SEQ DESC
+      ]]>
+   </select>
+</mapper>
