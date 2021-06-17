@@ -2,12 +2,1468 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<html lang="en">
 
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="author" content="TechyDevs">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>SAP Scanner - Flight selected</title>
+<!-- Favicon -->
+<link rel="icon" href="images/favicon.png">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+	rel="stylesheet">
+
+<!-- Template CSS Files -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-select.min.css">
+<link rel="stylesheet" href="css/line-awesome.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="css/daterangepicker.css">
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="css/animated-headline.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/flag-icon.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<!-- start cssload-loader -->
+	<div class="preloader" id="preloader">
+		<div class="loader">
+			<svg class="spinner" viewBox="0 0 50 50">
+                <circle class="path" cx="25" cy="25" r="20" fill="none"
+					stroke-width="5"></circle>
+            </svg>
+		</div>
+	</div>
+	<!-- end cssload-loader -->
+
+	<!-- ================================
+            START HEADER AREA
+================================= -->
+	<header class="header-area">
+		<div class="header-top-bar padding-right-100px padding-left-100px">
+			<div class="container-fluid">
+				<div class="row align-items-center">
+					<div class="col-lg-6">
+						<div class="header-top-content">
+							<div class="header-left">
+								<ul class="list-items">
+									<li><a href="#"><i class="la la-phone mr-1"></i>(02)1234-5678</a></li>
+									<li><a href="#"><i class="la la-envelope mr-1"></i>admin@sapscanner.com</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="header-top-content">
+							<div
+								class="header-right d-flex align-items-center justify-content-end">
+								<div class="header-right-action">
+									<div class="select-contain select--contain w-auto">
+										<select class="select-contain-select">
+											<option
+												data-content='<span class="flag-icon flag-icon-kr mr-1"></span> Korean'
+												selected>Korean</option>
+											<option
+												data-content='<span class="flag-icon flag-icon-us mr-1"></span> English(US)'>
+												English (US)</option>
+										</select>
+									</div>
+								</div>
+								<div class="header-right-action">
+									<div class="select-contain select--contain w-auto">
+										<select class="select-contain-select">
+											<option value="1" selected>KRW</option>
+											<option value="2">USD</option>
+										</select>
+									</div>
+								</div>
+								<div class="header-right-action">
+									<a href="#"
+										class="theme-btn theme-btn-small theme-btn-transparent mr-1"
+										data-toggle="modal" data-target="#signupPopupForm">회원가입</a> <a
+										href="#" class="theme-btn theme-btn-small" data-toggle="modal"
+										data-target="#loginPopupForm">로그인</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="header-menu-wrapper padding-right-100px padding-left-100px">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="menu-wrapper">
+							<a href="#" class="down-button"><i class="la la-angle-down"></i></a>
+							<div class="logo">
+								<a href="index.html"><img src="images/logo.png" alt="logo"></a>
+								<div class="menu-toggler">
+									<i class="la la-bars"></i> <i class="la la-times"></i>
+								</div>
+								<!-- end menu-toggler -->
+							</div>
+							<!-- end logo -->
+
+							<!--headerMenu-->
+							<div class="main-menu-content">
+								<nav>
+									<ul>
+										<li><a href="index.html">홈 </a></li>
+										<li><a href="flight-list.html">항공권 </i></a></li>
+
+										<li><a href="hotel-list.html">호텔</a></li>
+
+										<li><a href="#">페이지<i class="la la-angle-down"></i></a>
+											<div class="dropdown-menu-item mega-menu">
+												<ul class="row no-gutters">
+													<li class="col-lg-3 mega-menu-item">
+														<ul>
+															<li><a href="admin-dashboard.html">관리자 대쉬보드</a></li>
+															<li><a href="about.html">소개</a></li>
+															<li><a href="services.html">서비스</a></li>
+														</ul>
+													</li>
+													<li class="col-lg-3 mega-menu-item">
+														<ul>
+															<li><a href="user-dashboard.html">사용자 대쉬보드</a></li>
+															<li><a href="user-profile.html">사용자 프로필</a></li>
+															<li><a href="recover.html">비밀번호 찾기</a></li>
+														</ul>
+													</li>
+													<li class="col-lg-3 mega-menu-item">
+														<ul>
+															<li><a href="cart.html">카트</a></li>
+															<li><a href="checkout.html">체크아웃</a></li>
+															<li><a href="pricing.html">가격</a></li>
+														</ul>
+													</li>
+													<li class="col-lg-3 mega-menu-item">
+														<ul>
+															<li><a href="payment-received.html">결제 확인</a></li>
+															<li><a href="payment-complete.html">결제 완료</a></li>
+															<li><a href="faq.html">문의사항</a></li>
+														</ul>
+													</li>
+												</ul>
+											</div></li>
+
+									</ul>
+								</nav>
+							</div>
+							<!-- end main-menu-content -->
+							<div class="nav-btn">
+								<a href="become-local-expert.html" class="theme-btn">여행가이드
+									신청</a>
+							</div>
+							<!-- end nav-btn -->
+						</div>
+						<!-- end menu-wrapper -->
+					</div>
+					<!-- end col-lg-12 -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end header-menu-wrapper -->
+	</header>
+
+
+
+
+	<!-- ================================
+     END HEADER AREA
+================================= -->
+	<!-- ================================
+    START BREADCRUMB AREA
+================================= -->
+	<section class="breadcrumb-area bread-bg-6 py-0">
+		<div class="breadcrumb-wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="breadcrumb-btn">
+							<a class="d-none" data-fancybox="gallery"
+								data-src="images/destination-img2.jpg"
+								data-caption="Showing image - 02" data-speed="700"></a> <a
+								class="d-none" data-fancybox="gallery"
+								data-src="images/destination-img3.jpg"
+								data-caption="Showing image - 03" data-speed="700"></a> <a
+								class="d-none" data-fancybox="gallery"
+								data-src="images/destination-img4.jpg"
+								data-caption="Showing image - 04" data-speed="700"></a>
+						</div>
+						<!-- end breadcrumb-btn -->
+					</div>
+					<!-- end col-lg-12 -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end breadcrumb-wrap -->
+	</section>
+	<!-- end breadcrumb-area -->
+	<!-- ================================
+    END BREADCRUMB AREA
+================================= -->
+
+	<!-- ================================
+    START TOUR DETAIL AREA
+================================= -->
+	<section class="tour-detail-area padding-bottom-90px">
+		<div class="single-content-navbar-wrap menu section-bg"
+			id="single-content-navbar">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="single-content-nav" id="single-content-nav">
+							<ul>
+								<li><a data-scroll="description" href="#description"
+									class="scroll-link active">항공권 상세정보</a></li>
+								<li><a data-scroll="seat-selection" href="#seat-selection"
+									class="scroll-link">좌석 선택</a></li>
+								<li><a data-scroll="baggage" href="#baggage"
+									class="scroll-link">수하물</a></li>
+								<li><a data-scroll="fare-rules" href="#fare-rules"
+									class="scroll-link">항공 운임</a>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end single-content-navbar-wrap -->
+		<div class="single-content-box">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="single-content-wrap padding-top-60px">
+							<div id="description" class="page-scroll">
+								<div class="single-content-item pb-4">
+									<h3 class="title font-size-26">New York to Paris</h3>
+									<div class="d-flex align-items-center pt-2">
+										<p class="mr-2">One way flight</p>
+										<p>
+											<span
+												class="badge badge-warning text-white font-weight-medium font-size-16">1
+												Stop</span>
+										</p>
+									</div>
+								</div>
+								<!-- end single-content-item -->
+								<div class="section-block"></div>
+								<div class="single-content-item py-4">
+									<div class="row">
+										<div class="col-lg-4 col-sm-4">
+											<div class="single-feature-titles text-center mb-3">
+												<h3 class="title font-size-15 font-weight-medium">이륙 시간</h3>
+												<span class="font-size-13">12 Jun 2020, 7:50 am</span>
+											</div>
+										</div>
+										<!-- end col-lg-4 -->
+										<div class="col-lg-4 col-sm-4">
+											<div class="single-feature-titles text-center mb-3">
+												<i class="la la-clock-o text-color font-size-22"></i> <span
+													class="font-size-13 mt-n2">13H 40M</span>
+											</div>
+										</div>
+										<!-- end col-lg-4 -->
+										<div class="col-lg-4 col-sm-4">
+											<div class="single-feature-titles text-center mb-3">
+												<h3 class="title font-size-15 font-weight-medium">착륙 시간</h3>
+												<span class="font-size-13">13 Jun 2020, 5:50 am</span>
+											</div>
+										</div>
+										<!-- end col-lg-4 -->
+										<div class="col-lg-12">
+											<div
+												class="single-feature-titles text-center border-top border-bottom py-3 mb-4">
+												<h3 class="title font-size-15 font-weight-medium">
+													총 운항 시간: <span
+														class="font-size-13 d-inline-block ml-1 text-gray">13
+														Hours 40 min</span>
+												</h3>
+											</div>
+										</div>
+										<!-- end col-lg-12 -->
+										<div class="col-lg-4 responsive-column">
+											<div
+												class="single-tour-feature d-flex align-items-center mb-3">
+												<div
+													class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+													<i class="la la-plane"></i>
+												</div>
+												<div class="single-feature-titles">
+													<h3 class="title font-size-15 font-weight-medium">항공사</h3>
+													<span class="font-size-13">Delta</span>
+												</div>
+											</div>
+											<!-- end single-tour-feature -->
+										</div>
+										<!-- end col-lg-4 -->
+										<div class="col-lg-4 responsive-column">
+											<div
+												class="single-tour-feature d-flex align-items-center mb-3">
+												<div
+													class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+													<i class="la la-user"></i>
+												</div>
+												<div class="single-feature-titles">
+													<h3 class="title font-size-15 font-weight-medium">좌석
+														등급</h3>
+													<span class="font-size-13">이코노미</span>
+												</div>
+											</div>
+											<!-- end single-tour-feature -->
+										</div>
+										<!-- end col-lg-4 -->
+										<div class="col-lg-4 responsive-column">
+											<div
+												class="single-tour-feature d-flex align-items-center mb-3">
+												<div
+													class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+													<i class="la la-refresh"></i>
+												</div>
+												<div class="single-feature-titles">
+													<h3 class="title font-size-15 font-weight-medium">기내
+														서비스</h3>
+													<span class="font-size-13">사용가능한 리스트</span>
+												</div>
+											</div>
+											<!-- end single-tour-feature -->
+										</div>
+										<!-- end col-lg-4 -->
+										<div class="col-lg-4 responsive-column">
+											<div
+												class="single-tour-feature d-flex align-items-center mb-3">
+												<div
+													class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+													<i class="la la-times"></i>
+												</div>
+												<div class="single-feature-titles">
+													<h3 class="title font-size-15 font-weight-medium">항공권
+														취소</h3>
+													<span class="font-size-13">$78 / 1인</span>
+												</div>
+											</div>
+											<!-- end single-tour-feature -->
+										</div>
+										<!-- end col-lg-4 -->
+										<div class="col-lg-4 responsive-column">
+											<div
+												class="single-tour-feature d-flex align-items-center mb-3">
+												<div
+													class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+													<i class="la la-exchange"></i>
+												</div>
+												<div class="single-feature-titles">
+													<h3 class="title font-size-15 font-weight-medium">항공권
+														변경</h3>
+													<span class="font-size-13">$53 / 1인</span>
+												</div>
+											</div>
+											<!-- end single-tour-feature -->
+										</div>
+										<!-- end col-lg-4 -->
+										<div class="col-lg-4 responsive-column">
+											<div
+												class="single-tour-feature d-flex align-items-center mb-3">
+												<div
+													class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+													<i class="la la-shopping-cart"></i>
+												</div>
+												<div class="single-feature-titles">
+													<h3 class="title font-size-15 font-weight-medium">결제
+														가격</h3>
+													<span class="font-size-13">$300.00</span>
+												</div>
+											</div>
+											<!-- end single-tour-feature -->
+										</div>
+										<!-- end col-lg-4 -->
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end single-content-item -->
+								<div class="section-block"></div>
+								<div id="reviews" class="page-scroll">
+									<div
+										class="single-content-item padding-top-40px padding-bottom-40px">
+										<h3 class="title font-size-20">항공사 평가</h3>
+										<div class="review-container padding-top-30px">
+											<div class="row align-items-center">
+												<div class="col-lg-4">
+													<div class="review-summary">
+														<h2>
+															4.3<span>/5.0</span>
+														</h2>
+														<p>Excellent</p>
+													</div>
+												</div>
+												<!-- end col-lg-4 -->
+												<div class="col-lg-8">
+													<div class="review-bars">
+														<div class="row">
+															<div class="col-lg-6">
+																<div class="progress-item">
+																	<h3 class="progressbar-title">서비스</h3>
+																	<div
+																		class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
+																		<div class="progressbar-box flex-shrink-0">
+																			<div class="progressbar-line" data-percent="92%">
+																				<div class="progressbar-line-item bar-bg-1"></div>
+																			</div>
+																			<!-- End Skill Bar -->
+																		</div>
+																		<div class="bar-percent">4.6</div>
+																	</div>
+																</div>
+																<!-- end progress-item -->
+															</div>
+															<!-- end col-lg-6 -->
+															<div class="col-lg-6">
+																<div class="progress-item">
+																	<h3 class="progressbar-title">정시출발</h3>
+																	<div
+																		class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
+																		<div class="progressbar-box flex-shrink-0">
+																			<div class="progressbar-line" data-percent="94%">
+																				<div class="progressbar-line-item bar-bg-2"></div>
+																			</div>
+																			<!-- End Skill Bar -->
+																		</div>
+																		<div class="bar-percent">4.7</div>
+																	</div>
+																</div>
+																<!-- end progress-item -->
+															</div>
+															<!-- end col-lg-6 -->
+															<div class="col-lg-6">
+																<div class="progress-item">
+																	<h3 class="progressbar-title">가격</h3>
+																	<div
+																		class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
+																		<div class="progressbar-box flex-shrink-0">
+																			<div class="progressbar-line" data-percent="72%">
+																				<div class="progressbar-line-item bar-bg-3"></div>
+																			</div>
+																			<!-- End Skill Bar -->
+																		</div>
+																		<div class="bar-percent">3.6</div>
+																	</div>
+																</div>
+																<!-- end progress-item -->
+															</div>
+															<!-- end col-lg-6 -->
+															<div class="col-lg-6">
+																<div class="progress-item">
+																	<h3 class="progressbar-title">청결</h3>
+																	<div
+																		class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
+																		<div class="progressbar-box flex-shrink-0">
+																			<div class="progressbar-line" data-percent="88%">
+																				<div class="progressbar-line-item bar-bg-4"></div>
+																			</div>
+																			<!-- End Skill Bar -->
+																		</div>
+																		<div class="bar-percent">4.4</div>
+																	</div>
+																</div>
+																<!-- end progress-item -->
+															</div>
+															<!-- end col-lg-6 -->
+															<div class="col-lg-6">
+																<div class="progress-item">
+																	<h3 class="progressbar-title">시설</h3>
+																	<div
+																		class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
+																		<div class="progressbar-box flex-shrink-0">
+																			<div class="progressbar-line" data-percent="84%">
+																				<div class="progressbar-line-item bar-bg-5"></div>
+																			</div>
+																			<!-- End Skill Bar -->
+																		</div>
+																		<div class="bar-percent">4.2</div>
+																	</div>
+																</div>
+																<!-- end progress-item -->
+															</div>
+															<!-- end col-lg-6 -->
+														</div>
+														<!-- end row -->
+													</div>
+												</div>
+												<!-- end col-lg-8 -->
+											</div>
+										</div>
+									</div>
+									<!-- end single-content-item -->
+									<div class="section-block"></div>
+								</div>
+								<!-- end reviews -->
+							</div>
+							<!-- end description -->
+							<div id="inflight-features" class="page-scroll">
+								<div
+									class="single-content-item padding-top-40px padding-bottom-30px">
+									<h3 class="title font-size-20">기내 서비스</h3>
+									<p class="pt-3">해당 항공편은 다음과 같은 기내 서비스를 제공합니다.</p>
+									<div class="inflight-content-item pt-4">
+										<div class="row">
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-wifi"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">WI-FI</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-music"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Entertainment
+														</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-television"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Television
+														</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-tree"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Air
+															Conditioning</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-glass"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Drink</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-gamepad"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Games</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-coffee"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Coffee</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-glass"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Wines</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-shopping-cart"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Shopping</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-cutlery"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Food</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-bed"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Comfort</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-photo"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">Magazines</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+										</div>
+										<!-- end row -->
+									</div>
+									<!-- end inflight-content-item -->
+								</div>
+								<!-- end single-content-item -->
+								<div class="section-block"></div>
+							</div>
+							<!-- end inflight-features -->
+							<div id="seat-selection" class="page-scroll">
+								<div
+									class="single-content-item padding-top-40px padding-bottom-40px">
+									<h3 class="title font-size-20">좌석 선택</h3>
+									<p class="pt-3">원하는 좌석 등급에 따라 체크박스를 선택해주세요.</p>
+									<div class="cabin-type padding-top-30px">
+										<div class="cabin-type-item seat-selection-item d-flex">
+											<div class="cabin-type-img flex-shrink-0">
+												<img src="images/seat1.jpg" alt="">
+											</div>
+											<div class="cabin-type-detail">
+												<h3 class="title">이코노미 등급</h3>
+												<p class="font-size-15 pt-2">
+													기본등급 좌석<br>
+													<br>
+												</p>
+											</div>
+											<div class="cabin-price text-center">
+												<div class="custom-checkbox mb-0">
+													<input type="checkbox" id="selectChb1"> <label
+														for="selectChb1" class="theme-btn theme-btn-small">선택</label>
+												</div>
+											</div>
+										</div>
+										<!-- end cabin-type-item -->
+									</div>
+									<!-- end cabin-type -->
+									<div class="cabin-type padding-top-30px">
+										<div class="cabin-type-item seat-selection-item d-flex">
+											<div class="cabin-type-img flex-shrink-0">
+												<img src="images/seat2.jpg" alt="">
+											</div>
+											<div class="cabin-type-detail">
+												<h3 class="title">비지니스 등급</h3>
+												<p class="font-size-15 pt-2">
+													조금더 편한한 혜택을 제공합니다.<br>
+													<br>
+												</p>
+											</div>
+											<div class="cabin-price text-center">
+												<p class="text-uppercase font-size-14">
+													추가금<strong class="mt-n1 text-black font-size-18 d-block">$50</strong>
+												</p>
+												<div class="custom-checkbox mb-0">
+													<input type="checkbox" id="selectChb2"> <label
+														for="selectChb2" class="theme-btn theme-btn-small">선택</label>
+												</div>
+											</div>
+										</div>
+										<!-- end cabin-type-item -->
+									</div>
+									<!-- end cabin-type -->
+									<div class="cabin-type padding-top-30px">
+										<div class="cabin-type-item seat-selection-item d-flex">
+											<div class="cabin-type-img flex-shrink-0">
+												<img src="images/seat3.jpg" alt="">
+											</div>
+											<div class="cabin-type-detail">
+												<h3 class="title">1등석</h3>
+												<p class="font-size-15 pt-2">최고의 서비스를 제공합니다.</p>
+											</div>
+											<div class="cabin-price text-center">
+												<p class="text-uppercase font-size-14">
+													추가금<strong class="mt-n1 text-black font-size-18 d-block">$200</strong>
+												</p>
+												<div class="custom-checkbox mb-0">
+													<input type="checkbox" id="selectChb3"> <label
+														for="selectChb3" class="theme-btn theme-btn-small">선택</label>
+												</div>
+											</div>
+										</div>
+										<!-- end cabin-type-item -->
+									</div>
+									<!-- end cabin-type -->
+								</div>
+								<!-- end single-content-item -->
+								<div class="section-block"></div>
+							</div>
+							<!-- end seat-selection -->
+							<div id="baggage" class="page-scroll">
+								<div
+									class="single-content-item padding-top-40px padding-bottom-40px">
+									<div class="baggage-feature-item py-4">
+										<p class="pb-3">수하물 규정</p>
+										<div class="row">
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-shopping-cart"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">기내
+															반입</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-briefcase"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">검사</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-briefcase"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">지연가능</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-briefcase"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">손상시
+															피해보상</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-briefcase"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">반입금지
+															물품</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+														<i class="la la-briefcase"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">분실물
+															취급소</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+										</div>
+										<!-- end row -->
+									</div>
+								</div>
+								<!-- end single-content-item -->
+								<div class="section-block"></div>
+							</div>
+							<!-- end faq -->
+							<div id="fare-rules" class="page-scroll">
+								<div
+									class="single-content-item padding-top-40px padding-bottom-40px">
+									<h3 class="title font-size-20">항공 운임 규정</h3>
+									<div class="fare-feature-item padding-top-30px pb-2">
+										<div class="row">
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-2">
+														<i class="la la-check"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">항공권
+															변경</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-2">
+														<i class="la la-check"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">좌석등급
+															변경</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+											<div class="col-lg-4 responsive-column">
+												<div
+													class="single-tour-feature d-flex align-items-center mb-3">
+													<div
+														class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-2">
+														<i class="la la-check"></i>
+													</div>
+													<div class="single-feature-titles">
+														<h3 class="title font-size-15 font-weight-medium">항공권
+															취소 및 환불</h3>
+													</div>
+												</div>
+												<!-- end single-tour-feature -->
+											</div>
+											<!-- end col-lg-4 -->
+										</div>
+										<!-- end row -->
+									</div>
+									<p>저희 SAP SCANNER는 다음과 같은 약관을 규정합니다.</p>
+									<div class="accordion accordion-item padding-top-30px"
+										id="accordionExample2">
+										<div class="card">
+											<div class="card-header" id="faqHeadingFive">
+												<h2 class="mb-0">
+													<button
+														class="btn btn-link d-flex align-items-center justify-content-end flex-row-reverse font-size-16"
+														type="button" data-toggle="collapse"
+														data-target="#faqCollapseFive" aria-expanded="false"
+														aria-controls="faqCollapseFive">
+														<span class="ml-3">항공권 변경</span> <i class="la la-minus"></i>
+														<i class="la la-plus"></i>
+													</button>
+												</h2>
+											</div>
+											<div id="faqCollapseFive" class="collapse"
+												aria-labelledby="faqHeadingFive"
+												data-parent="#accordionExample2">
+												<div class="card-body d-flex">
+													<p>같은 등급의 항공권은 출발일 기준 1주일내가 아니면 추가 요금없이 원하는 항공권으로 변경
+														가능합니다.</p>
+												</div>
+											</div>
+										</div>
+										<!-- end card -->
+										<div class="card">
+											<div class="card-header" id="faqHeadingSix">
+												<h2 class="mb-0">
+													<button
+														class="btn btn-link d-flex align-items-center justify-content-end flex-row-reverse font-size-16"
+														type="button" data-toggle="collapse"
+														data-target="#faqCollapseSix" aria-expanded="false"
+														aria-controls="faqCollapseSix">
+														<span class="ml-3">등급 업그레이드</span> <i class="la la-minus"></i>
+														<i class="la la-plus"></i>
+													</button>
+												</h2>
+											</div>
+											<div id="faqCollapseSix" class="collapse"
+												aria-labelledby="faqHeadingSix"
+												data-parent="#accordionExample2">
+												<div class="card-body d-flex">
+													<p>좌석등급 업그레이드시 해당 항공사의 규정된 금액만큼 추가요금 결제 후 좌석등급 변경
+														가능합니다.</p>
+												</div>
+											</div>
+										</div>
+										<!-- end card -->
+										<div class="card">
+											<div class="card-header" id="faqHeadingSeven">
+												<h2 class="mb-0">
+													<button
+														class="btn btn-link d-flex align-items-center justify-content-end flex-row-reverse font-size-16"
+														type="button" data-toggle="collapse"
+														data-target="#faqCollapseSeven" aria-expanded="false"
+														aria-controls="faqCollapseSeven">
+														<span class="ml-3">취소 및 환불</span> <i class="la la-minus"></i>
+														<i class="la la-plus"></i>
+													</button>
+												</h2>
+											</div>
+											<div id="faqCollapseSeven" class="collapse"
+												aria-labelledby="faqHeadingSeven"
+												data-parent="#accordionExample2">
+												<div class="card-body d-flex">
+													<p>출발일 기준 1주내 환불 시 100% 5일 90% 3일 80% 2일 70% 1일 50%
+														환불가능</p>
+												</div>
+											</div>
+										</div>
+										<!-- end card -->
+									</div>
+								</div>
+								<!-- end single-content-item -->
+								<div class="section-block"></div>
+							</div>
+							<!-- end faq -->
+						</div>
+						<!-- end single-content-wrap -->
+					</div>
+					<!-- end col-lg-8 -->
+					<div class="col-lg-4">
+						<div class="sidebar single-content-sidebar mb-0">
+							<div class="sidebar-widget single-content-widget">
+								<div class="sidebar-widget-item">
+									<div class="sidebar-book-title-wrap mb-3">
+										<h3>인기상품</h3>
+										<p>
+											<span class="text-form">가격</span><span
+												class="text-value ml-2 mr-1">$399.00</span> <span
+												class="before-price">$412.00</span>
+										</p>
+									</div>
+								</div>
+								<!-- end sidebar-widget-item -->
+								<div class="sidebar-widget-item">
+									<div class="contact-form-action">
+										<form action="#">
+											<div class="input-box">
+												<label class="label-text">날짜</label>
+												<div class="form-group">
+													<span class="la la-calendar form-icon"></span> <input
+														class="date-range form-control" type="text"
+														name="daterange-single" readonly>
+												</div>
+											</div>
+											<div class="input-box">
+												<label class="label-text">좌석등급</label>
+												<div class="form-group">
+													<div class="select-contain w-auto">
+														<select class="select-contain-select">
+															<option value="first">이코노미</option>
+															<option value="business">비지니스</option>
+															<option value="premium">1등석</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+								<!-- end sidebar-widget-item -->
+								<div class="sidebar-widget-item">
+									<div
+										class="qty-box mb-2 d-flex align-items-center justify-content-between">
+										<label class="font-size-16">성인 <span>나이 18+</span></label>
+										<div class="qtyBtn d-flex align-items-center">
+											<div class="qtyDec">
+												<i class="la la-minus"></i>
+											</div>
+											<input type="text" name="qtyInput" value="0">
+											<div class="qtyInc">
+												<i class="la la-plus"></i>
+											</div>
+										</div>
+									</div>
+									<!-- end qty-box -->
+									<div
+										class="qty-box mb-2 d-flex align-items-center justify-content-between">
+										<label class="font-size-16">어린이 <span>2-12살</span></label>
+										<div class="qtyBtn d-flex align-items-center">
+											<div class="qtyDec">
+												<i class="la la-minus"></i>
+											</div>
+											<input type="text" name="qtyInput" value="0">
+											<div class="qtyInc">
+												<i class="la la-plus"></i>
+											</div>
+										</div>
+									</div>
+									<!-- end qty-box -->
+									<div
+										class="qty-box mb-2 d-flex align-items-center justify-content-between">
+										<label class="font-size-16">유아 <span>0-2살</span></label>
+										<div class="qtyBtn d-flex align-items-center">
+											<div class="qtyDec">
+												<i class="la la-minus"></i>
+											</div>
+											<input type="text" name="qtyInput" value="0">
+											<div class="qtyInc">
+												<i class="la la-plus"></i>
+											</div>
+										</div>
+									</div>
+									<!-- end qty-box -->
+								</div>
+								<!-- end sidebar-widget-item -->
+								<div class="btn-box pt-2">
+									<a href="flight-booking.html"
+										class="theme-btn text-center w-100 mb-2"><i
+										class="la la-shopping-cart mr-2 font-size-18"></i>예약하기</a> <a
+										href="#"
+										class="theme-btn text-center w-100 theme-btn-transparent"><i
+										class="la la-heart-o mr-2"></i>장바구니에 담기</a>
+								</div>
+							</div>
+							<!-- end sidebar-widget -->
+							<div class="sidebar-widget single-content-widget">
+								<h3 class="title stroke-shape">우리와 함께하는 이유는?</h3>
+								<div class="sidebar-list">
+									<ul class="list-items">
+										<li><i class="la la-dollar icon-element mr-2"></i>번거로움 없는
+											결제기능</li>
+										<li><i class="la la-microphone icon-element mr-2"></i>실시간
+											고객서비스</li>
+										<li><i class="la la-file-text icon-element mr-2"></i>무료
+											발권 보험</li>
+									</ul>
+								</div>
+								<!-- end sidebar-list -->
+							</div>
+							<!-- end sidebar-widget -->
+							<div class="sidebar-widget single-content-widget">
+								<h3 class="title stroke-shape">문의사항</h3>
+								<p class="font-size-14 line-height-24">서비스에 대한 문제가 있을 시, 저희
+									여행사에 전화 문의 부탁드립니다.</p>
+								<div class="sidebar-list pt-3">
+									<ul class="list-items">
+										<li><i class="la la-phone icon-element mr-2"></i><a
+											href="#">+ 82 -2 -1234 5678</a></li>
+										<li><i class="la la-envelope icon-element mr-2"></i><a
+											href="mailto:info@trizen.com">service@sapscanner.com</a></li>
+									</ul>
+								</div>
+								<!-- end sidebar-list -->
+							</div>
+							<!-- end sidebar-widget -->
+						</div>
+						<!-- end sidebar -->
+					</div>
+					<!-- end col-lg-4 -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end single-content-box -->
+	</section>
+	<!-- end tour-detail-area -->
+	<!-- ================================
+    END TOUR DETAIL AREA
+================================= -->
+
+	<div class="section-block"></div>
+
+
+	<!-- ================================
+       START FOOTER AREA
+================================= -->
+	<section
+		class="footer-area section-bg padding-top-100px padding-bottom-30px">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 responsive-column">
+					<div class="footer-item">
+						<div class="footer-logo padding-bottom-30px">
+							<a href="index.html" class="foot__logo"><img
+								src="images/logo.png" alt="logo"></a>
+						</div>
+						<!-- end logo -->
+						<ul class="list-items list--items">
+							<li><a href="#">admin@sapscanner.com</a></li>
+							<li>Seocho-gu, Seoul, Republic of Korea</li>
+							<li>33, Seocho-daero 74-gil, 06621</li>
+						</ul>
+					</div>
+					<!-- end footer-item -->
+				</div>
+				<!-- end col-lg-3 -->
+				<div class="col-lg-3 responsive-column">
+					<div class="footer-item">
+						<h4 class="title curve-shape pb-3 margin-bottom-20px"
+							data-text="curvs">회사</h4>
+						<ul class="list-items list--items">
+							<li><a href="about.html">소개</a></li>
+							<li><a href="services.html">서비스</a></li>
+							<li><a href="#">문의사항</a></li>
+						</ul>
+					</div>
+					<!-- end footer-item -->
+				</div>
+				<!-- end col-lg-3 -->
+				<div class="col-lg-3 responsive-column">
+					<div class="footer-item">
+						<h4 class="title curve-shape pb-3 margin-bottom-20px"
+							data-text="curvs">링크</h4>
+						<ul class="list-items list--items">
+							<li><a href="#">관광지 소개</a></li>
+							<li><a href="#">네이버 블로그 </a></li>
+							<li><a href="#">카카오 스토리 </a></li>
+						</ul>
+					</div>
+					<!-- end footer-item -->
+				</div>
+				<!-- end col-lg-3 -->
+				<div class="col-lg-3 responsive-column">
+					<div class="footer-item">
+						<h4 class="title curve-shape pb-3 margin-bottom-20px"
+							data-text="curvs">구독</h4>
+						<div class="contact-form-action">
+							<form action="#">
+								<div class="input-box">
+									<div class="form-group mb-0">
+										<span class="la la-envelope form-icon"></span> <input
+											class="form-control" type="email" name="email"
+											placeholder="이메일 주소">
+										<button class="theme-btn theme-btn-small submit-btn"
+											type="submit">Go</button>
+										<span class="font-size-14 pt-1"><i
+											class="la la-lock mr-1"></i>입력된 이메일 보호 및 보안</span>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- end footer-item -->
+				</div>
+				<!-- end col-lg-3 -->
+			</div>
+			<!-- end row -->
+			<div class="row align-items-center">
+				<div class="col-lg-8">
+					<div class="term-box footer-item">
+						<ul class="list-items list--items d-flex align-items-center">
+							<li><a href="#">이용 약관</a></li>
+							<li><a href="#">개인정보 보호정책</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- end col-lg-8 -->
+				<div class="col-lg-4">
+					<div class="footer-social-box text-right">
+						<ul class="social-profile">
+							<li><a href="#"><i class="lab la-facebook-f"></i></a></li>
+							<li><a href="#"><i class="lab la-twitter"></i></a></li>
+							<li><a href="#"><i class="lab la-instagram"></i></a></li>
+							<li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- end col-lg-4 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+		<div class="section-block mt-4"></div>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-7">
+					<div class="copy-right padding-top-30px">
+						<p class="copy__desc">
+							&copy; Copyright SAP Scanner 2021. Made with <span
+								class="la la-heart"></span> by <a
+								href="https://github.com/bkk91/">Team SAP</a>
+						</p>
+					</div>
+					<!-- end copy-right -->
+				</div>
+				<!-- end col-lg-7 -->
+
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</section>
+	<!-- end footer-area -->
+	<!-- ================================
+   START FOOTER AREA
+================================= -->
+
+	<!-- start back-to-top -->
+	<div id="back-to-top">
+		<i class="la la-angle-up" title="Go top"></i>
+	</div>
+	<!-- end back-to-top -->
+
+	<!-- 회원가입 팝업창 시작 -->
+	<div class="modal-popup">
+		<div class="modal fade" id="signupPopupForm" tabindex="-1"
+			role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div>
+							<h5 class="modal-title title" id="exampleModalLongTitle">Sign
+								Up</h5>
+							<p class="font-size-14">안녕하세요^^!$#@$#@$#@$</p>
+						</div>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true" class="la la-close"></span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="contact-form-action">
+							<form method="post">
+								<div class="input-box">
+									<label class="label-text">Username</label>
+									<div class="form-group">
+										<span class="la la-user form-icon"></span> <input
+											class="form-control" type="text" name="text"
+											placeholder="Type your username">
+									</div>
+								</div>
+								<!-- end input-box -->
+								<div class="input-box">
+									<label class="label-text">Email Address</label>
+									<div class="form-group">
+										<span class="la la-envelope form-icon"></span> <input
+											class="form-control" type="text" name="text"
+											placeholder="Type your email">
+									</div>
+								</div>
+								<!-- end input-box -->
+								<div class="input-box">
+									<label class="label-text">Password</label>
+									<div class="form-group">
+										<span class="la la-lock form-icon"></span> <input
+											class="form-control" type="text" name="text"
+											placeholder="Type password">
+									</div>
+								</div>
+								<!-- end input-box -->
+								<div class="input-box">
+									<label class="label-text">Repeat Password</label>
+									<div class="form-group">
+										<span class="la la-lock form-icon"></span> <input
+											class="form-control" type="text" name="text"
+											placeholder="Type again password">
+									</div>
+								</div>
+								<!-- end input-box -->
+								<div class="btn-box pt-3 pb-4">
+									<button type="button" class="theme-btn w-100">Register
+										Account</button>
+								</div>
+								<div class="action-box text-center">
+									<p class="font-size-14">Or Sign up Using</p>
+									<ul class="social-profile py-3">
+										<li><a href="#" class="bg-5 text-white"><i
+												class="lab la-facebook-f"></i></a></li>
+										<li><a href="#" class="bg-6 text-white"><i
+												class="lab la-twitter"></i></a></li>
+										<li><a href="#" class="bg-7 text-white"><i
+												class="lab la-instagram"></i></a></li>
+										<li><a href="#" class="bg-5 text-white"><i
+												class="lab la-linkedin-in"></i></a></li>
+									</ul>
+								</div>
+							</form>
+						</div>
+						<!-- end contact-form-action -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 회원가입 팝업창 종료 -->
+
+	<!-- end modal-shared -->
+	<div class="modal-popup">
+		<div class="modal fade" id="loginPopupForm" tabindex="-1"
+			role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div>
+							<h5 class="modal-title title" id="exampleModalLongTitle2">Login</h5>
+							<p class="font-size-14">Hello! Welcome to your account</p>
+						</div>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true" class="la la-close"></span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="contact-form-action">
+							<form method="post">
+								<div class="input-box">
+									<label class="label-text">Username</label>
+									<div class="form-group">
+										<span class="la la-user form-icon"></span> <input
+											class="form-control" type="text" name="text"
+											placeholder="Type your username">
+									</div>
+								</div>
+								<!-- end input-box -->
+								<div class="input-box">
+									<label class="label-text">Password</label>
+									<div class="form-group mb-2">
+										<span class="la la-lock form-icon"></span> <input
+											class="form-control" type="text" name="text"
+											placeholder="Type your password">
+									</div>
+									<div class="d-flex align-items-center justify-content-between">
+										<div class="custom-checkbox mb-0">
+											<input type="checkbox" id="rememberchb"> <label
+												for="rememberchb">Remember me</label>
+										</div>
+										<p class="forgot-password">
+											<a href="recover.html">Forgot Password?</a>
+										</p>
+									</div>
+								</div>
+								<!-- end input-box -->
+								<div class="btn-box pt-3 pb-4">
+									<button type="button" class="theme-btn w-100">Login
+										Account</button>
+								</div>
+								<div class="action-box text-center">
+									<p class="font-size-14">Or Login Using</p>
+									<ul class="social-profile py-3">
+										<li><a href="#" class="bg-5 text-white"><i
+												class="lab la-facebook-f"></i></a></li>
+										<li><a href="#" class="bg-6 text-white"><i
+												class="lab la-twitter"></i></a></li>
+										<li><a href="#" class="bg-7 text-white"><i
+												class="lab la-instagram"></i></a></li>
+										<li><a href="#" class="bg-5 text-white"><i
+												class="lab la-linkedin-in"></i></a></li>
+									</ul>
+								</div>
+							</form>
+						</div>
+						<!-- end contact-form-action -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end modal-popup -->
+
+	<!-- Template JS Files -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-select.min.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/daterangepicker.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<script src="js/jquery.countTo.min.js"></script>
+	<script src="js/animated-headline.js"></script>
+	<script src="js/jquery.ripples-min.js"></script>
+	<script src="js/quantity-input.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
