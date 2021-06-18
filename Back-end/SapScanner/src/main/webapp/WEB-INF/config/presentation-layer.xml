@@ -11,7 +11,7 @@
       http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<context:component-scan
-		base-package="sap.scanner.webController">
+		base-package="sap.scanner.controller.web">
 	</context:component-scan>
 
 	<mvc:annotation-driven></mvc:annotation-driven>

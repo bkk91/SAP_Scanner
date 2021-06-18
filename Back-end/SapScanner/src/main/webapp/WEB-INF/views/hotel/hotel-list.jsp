@@ -18,11 +18,6 @@
 
 					</div>
 					<!-- end search-fields-container -->
-
-
-
-
-
 				</div>
 				<!-- end search-result-content -->
 			</div>

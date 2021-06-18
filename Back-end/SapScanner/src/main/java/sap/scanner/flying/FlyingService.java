@@ -1,5 +1,7 @@
 package sap.scanner.flying;
 
+import java.util.List;
+
 public interface FlyingService {
 
 	// 스케쥴 등록
@@ -12,8 +14,9 @@ public interface FlyingService {
 	void deleteSchedule(FlyingVO vo);
 
 	// 편도 스케쥴 검색
-	FlyingVO getSingleSchedule(FlyingVO vo);
-
+	List<FlyingVO> getSingleSchedule(FlyingVO vo);
+		
 	// 왕복 스케쥴 검색
-	FlyingVO getDoubleSchedule(FlyingVO vo);
+	List<FlyingVO> getDoubleSchedule(FlyingVO vo);
+		
 }

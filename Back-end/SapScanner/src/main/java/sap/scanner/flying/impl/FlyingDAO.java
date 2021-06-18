@@ -1,5 +1,7 @@
 package sap.scanner.flying.impl;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -8,7 +10,7 @@ import sap.scanner.flying.FlyingVO;
 
 @Repository
 public class FlyingDAO extends SqlSessionDaoSupport {
-
+	
 	private SqlSessionTemplate mybatis;
 
 	// 스케쥴 등록
@@ -26,14 +28,14 @@ public class FlyingDAO extends SqlSessionDaoSupport {
 		mybatis.delete("FlyingDAO.deleteSchedule", vo);
 	}
 
-	// 편도스케쥴 검색 후 출력
-	public FlyingVO getSingleSchedule(FlyingVO vo) {
-		return (FlyingVO) mybatis.selectOne("FlyingDAO.getSingleSchedule", vo);
+	// 편도스케쥴 검색 + 출력
+	public List<FlyingVO> getSingleSchedule(FlyingVO vo) {
+		return mybatis.selectList("FlyingDAO.getSingleSchedule", vo);
 	}
 
-	// 왕복스케쥴 검색 후 출력
-	public FlyingVO getDoubleSchedule(FlyingVO vo) {
-		return (FlyingVO) mybatis.selectOne("FlyingDAO.getDoubleSchedule", vo);
+	// 왕복스케쥴 검색 + 출력
+	public List<FlyingVO> getDoubleSchedule(FlyingVO vo) {
+		return mybatis.selectList("FlyingDAO.getDoubleSchedule", vo);
 	}
 
 }

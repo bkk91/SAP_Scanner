@@ -117,7 +117,7 @@
 							<div class="main-menu-content">
 								<nav>
 									<ul>
-										<li><a href="index.do">홈 </a></li>
+										<li><a href="index.jsp">홈 </a></li>
 										<li><a href="flight-search.do">항공권 </i></a></li>
 										<li><a href="hotel-search-result.do">호텔</a></li>
 										<li><a href="#">페이지<i class="la la-angle-down"></a></i>

@@ -2,11 +2,15 @@ package sap.scanner.flying;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class FlyingVO {
 	// 항공편 번호
 	private int vihicleId;
 	// 항공편 명
 	private String airlineNm;
+	// 출발 공항 + 도시 명
+	private String depCityAirportNm;
 	// 출발 공항 ID
 	private String depAirportId;
 	// 출발 공항 명
@@ -15,6 +19,8 @@ public class FlyingVO {
 	private String depCityNm;
 	// 출발 시간
 	private Date depPlandTime;
+	// 도착 공항 + 도시 명
+	private String arrCityAirportNm;
 	// 도착 공항 ID
 	private String arrAirportId;
 	// 도착 공항 명
@@ -63,9 +69,11 @@ public class FlyingVO {
 	private long reservationPrice;
 	// 예약 상태
 	private String reservationStatus;
-	
+	// 파일 업로드
+	private MultipartFile uploadFile;
+
 	// Getter, Setter 생성
-	
+
 	public int getVihicleId() {
 		return vihicleId;
 	}
@@ -77,6 +85,12 @@ public class FlyingVO {
 	}
 	public void setAirlineNm(String airlineNm) {
 		this.airlineNm = airlineNm;
+	}
+	public String getDepCityAirportNm() {
+		return depCityAirportNm;
+	}
+	public void setDepCityAirportNm(String depCityAirportNm) {
+		this.depCityAirportNm = depCityAirportNm;
 	}
 	public String getDepAirportId() {
 		return depAirportId;
@@ -101,6 +115,12 @@ public class FlyingVO {
 	}
 	public void setDepPlandTime(Date depPlandTime) {
 		this.depPlandTime = depPlandTime;
+	}
+	public String getArrCityAirportNm() {
+		return arrCityAirportNm;
+	}
+	public void setArrCityAirportNm(String arrCityAirportNm) {
+		this.arrCityAirportNm = arrCityAirportNm;
 	}
 	public String getArrAirportId() {
 		return arrAirportId;
@@ -245,5 +265,12 @@ public class FlyingVO {
 	}
 	public void setReservationStatus(String reservationStatus) {
 		this.reservationStatus = reservationStatus;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}	
+	
 }
