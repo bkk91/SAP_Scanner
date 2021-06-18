@@ -34,7 +34,6 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
 		<!-- DBCP -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -57,7 +56,12 @@
 			<artifactId>spring-security-oauth2-jose</artifactId>
 			<version>5.3.4.RELEASE</version>
 		</dependency>
-
+		<!-- Firebase -->
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>6.12.1</version>
+		</dependency>
 		<!-- FileUpload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>

@@ -175,7 +175,7 @@
 											</div>
 											<!-- end col-lg-3 -->
 											<div class="col-lg-3">
-												<a href="flight-list.html"
+												<a href="flight-list.do"
 													class="theme-btn w-100 text-center margin-top-20px">지금
 													검색하기</a>
 											</div>
@@ -812,7 +812,7 @@
 								</form>
 							</div>
 							<div class="btn-box">
-								<a href="hotel-list.html" class="theme-btn">지금 검색하기</a>
+								<a href="hotel-list.do" class="theme-btn">지금 검색하기</a>
 							</div>
 						</div>
 						<!-- end tab-pane -->

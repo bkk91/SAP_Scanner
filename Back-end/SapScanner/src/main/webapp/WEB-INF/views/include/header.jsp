@@ -118,9 +118,9 @@
 								<nav>
 									<ul>
 										<li><a href="index.do">홈 </a></li>
-										<li><a href="flight-search.html">항공권 </i></a></li>
-										<li><a href="hotel-search-result.html">호텔</a></li>
-										<li>페이지<i class="la la-angle-down"></i>
+										<li><a href="flight-search.do">항공권 </i></a></li>
+										<li><a href="hotel-search-result.do">호텔</a></li>
+										<li><a href="#">페이지<i class="la la-angle-down"></a></i>
 											<div class="dropdown-menu-item mega-menu">
 												<ul class="row no-gutters">
 													<li class="col-lg-5 mega-menu-item">
@@ -144,7 +144,7 @@
 							</div>
 							<!-- end main-menu-content -->
 							<div class="nav-btn">
-								<a href="become-local-expert.html" class="theme-btn">여행가이드
+								<a href="loading.do" class="theme-btn">여행가이드
 									신청</a>
 							</div>
 							<!-- end nav-btn -->

@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@include file="../include/header.jsp"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!-- ================================
  END HEADER AREA
 ================================= -->
@@ -10,6 +13,9 @@
     START BREADCRUMB AREA
 ================================= -->
 <section class="breadcrumb-area bread-bg-6">
+	<!-- 검색 시작 -->
+	<form action="flight-search.do" method="post">
+	
 	<div class="breadcrumb-wrap">
 		<div class="container">
 			<div class="row align-items-center">
@@ -160,7 +166,7 @@
 												</div>
 												<!-- end col-lg-3 -->
 												<div class="col-lg-3">
-													<a href="flight-list.html"
+													<a href="flight-list.do"
 														class="theme-btn w-100 text-center margin-top-20px">지금
 														검색하기</a>
 												</div>
@@ -285,7 +291,7 @@
 												</div>
 												<!-- end col-lg-3 -->
 												<div class="col-lg-3">
-													<a href="flight-list.html"
+													<a href="flight-list.do"
 														class="theme-btn w-100 text-center margin-top-20px">지금
 														검색하기</a>
 												</div>

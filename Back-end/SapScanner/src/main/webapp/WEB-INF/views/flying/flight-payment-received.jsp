@@ -17,12 +17,12 @@
 								class="step-bar-list d-flex align-items-center justify-content-around">
 								<li class="step-bar flex-grow-1 step-bar-active"><span
 									class="icon-element">1</span>
-									<p class="pt-2 color-text-2">Choose Your Room</p></li>
+									<p class="pt-2 color-text-2">항공권 선택</p></li>
 								<li class="step-bar flex-grow-1 step-bar-active"><span
 									class="icon-element">2</span>
-									<p class="pt-2 color-text-2">Your Booking & Payment Details</p></li>
+									<p class="pt-2 color-text-2">예약 및 결제상태</p></li>
 								<li class="step-bar flex-grow-1"><span class="icon-element">3</span>
-									<p class="pt-2 color-text-2">Booking Completed!</p></li>
+									<p class="pt-2 color-text-2">결제 완료!</p></li>
 							</ul>
 						</div>
 					</div>

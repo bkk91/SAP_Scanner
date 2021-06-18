@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FlyingDAO">
+	<!-- 항공권 스케쥴 입력 -->
+	<insert id="insertSchedule" parameterType="flying">
+      <![CDATA[
+            INSERT INTO FLIGHT_SCHEDULE(vihicleId, airlineNm, depAirportId, 
+            depAirportNm, depCityNm, depPlandTime, arrAirportId, arrAirportNm, 
+            arrCityNm, arrPlandTime, economyCharge, prestigeCharge, firstCharge)
+            VALUES(#{vihicleId}, #{airlineNm}, #{depAirportId}, #{depAirportNm},
+            #{depCityNm}, #{depPlandTime}, #{arrAirportId}, #{arrAirportNm},
+            #{arrCityNm}, #{arrPlandTime}, #{economyCharge}, #{prestigeCharge},
+            #{firstCharge})      
+      ]]>
+	</insert>
+
+	<!-- 편도 검색 조건 입력 후 출력 -->
+	<select id="getSingleSchedule" resultType="flying">
+      <![CDATA[
+      SELECT * FROM FLIGHT_SCHEDULE 
+      WHERE depCityNm LIKE '%' || #{SearchKeyword}|| '%' OR
+      WHERE depAirportNm Like '%' || #{SearchKeyword}|| '%' AND
+      WHERE arrCityNm LIKE '%' || #{SearchKeyword}|| '%' OR
+      WHERE arrAirportNm Like '%' || #{SearchKeyword}|| '%' AND 
+      WHERE depPlandTime Like '%' || #{SearchKeyword}|| '%' AND
+      ORDER BY economyCharge DESC;
+      ]]>
+	</select>
+	
+	<!-- 왕복 검색 조건 입력 후 출력 -->
+	<select id="getDoubleSchedule" resultType="flying">
+      <![CDATA[
+      SELECT * FROM FLIGHT_SCHEDULE 
+      WHERE depCityNm LIKE '%' || #{SearchKeyword}|| '%' OR
+      WHERE depAirportNm Like '%' || #{SearchKeyword}|| '%' AND
+      WHERE arrCityNm LIKE '%' || #{SearchKeyword}|| '%' OR
+      WHERE arrAirportNm Like '%' || #{SearchKeyword}|| '%' AND 
+      WHERE depPlandTime Like '%' || #{SearchKeyword}|| '%' AND
+      WHERE arrPlandTime Like '%' || #{SearchKeyword}|| '%' AND
+      ORDER BY economyCharge DESC;
+      ]]>
+	</select>
+</mapper>
