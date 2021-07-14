@@ -2,15 +2,29 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
-<configuration>   
-   <!-- Alias 설정 -->
-   <typeAliases>
-      <typeAlias type="sap.scanner.flying.FlyingVO" alias="flying"></typeAlias>
-   </typeAliases>
-   
-   <!-- Sql Mapper 설정 -->
-   <mappers>
-      <mapper resource="mappings/flying-mapping.xml" />
-   </mappers>
+
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+	<!-- Alias 설정 -->
+	<typeAliases>
+		<typeAlias type="sap.scanner.vo.FlyingVO" alias="flying"></typeAlias>
+		<typeAlias type="sap.scanner.vo.UserVO" alias="user"></typeAlias>
+		<typeAlias type="sap.scanner.vo.Criteria" alias="criteria"></typeAlias>
+		<typeAlias type="sap.scanner.vo.LowerHashMap" alias="camelmap"></typeAlias>
+		<typeAlias type="sap.scanner.vo.HotelVO" alias="hotel"></typeAlias>
+		<typeAlias type="sap.scanner.vo.PaymentVO" alias="payment"></typeAlias>
+	</typeAliases>
+
+	<!-- Sql Mapper 설정 -->
+	<mappers>
+		<mapper resource="mappings/flying-mapping.xml" />
+		<mapper resource="mappings/user-mapping.xml" />
+		<mapper resource="mappings/hotel-mapping.xml" />
+		<mapper resource="mappings/payment-mapping.xml" />
+	</mappers>
+
 </configuration>

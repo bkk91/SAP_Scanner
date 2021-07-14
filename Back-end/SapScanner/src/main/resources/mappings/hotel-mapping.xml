@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hotelMapper">
+
+	<!-- 호텔 검색 (이름,나라,지역 기준) -->
+	<select id="searchHotel" parameterType="hashmap"
+		resultType="hotel">
+
+		SELECT
+		t0.*, t3.min_price
+		FROM
+		hotel t0
+		inner join (
+		SELECT
+		t1.hotel_idx,
+		t1.hotel_name,
+		MIN(t2.room_price) min_price,
+		COUNT(t2.room_idx) room_cnt
+		FROM
+		hotel t1
+		LEFT OUTER JOIN room t2 ON
+		t1.hotel_idx = t2.hotel_idx
+		GROUP BY t1.hotel_idx, t1.hotel_name
+		) t3 on
+		t0.hotel_idx = t3.hotel_idx
+		WHERE
+		1 = 1
+		AND (t0.hotel_city like '%'||#{hotelSearch}||'%' OR
+		t0.hotel_country like
+		'%'||#{hotelSearch}||'%' OR t0.hotel_name like
+		'%'||#{hotelSearch}||'%')
+
+		<if test="totalPeoleCnt != null and totalPeoleCnt != ''">
+			AND t3.people_standard <![CDATA[>=]]>
+			#{totalPeopleCnt}
+		</if>
+
+		<if test="roomNumber != null and roomNumber != '' ">
+			AND t3.room_cnt <![CDATA[>]]>
+			#{roomNumber}
+		</if>
+
+		AND t3.room_cnt > ( SELECT
+		count(*)
+		FROM
+		room t4
+		INNER JOIN hotel_booking
+		t5 ON
+		t4.room_idx = t5.room_idx
+		WHERE
+		1 = 1
+		AND t4.hotel_idx =
+		t3.hotel_idx
+		AND t5.hbk_status = '예약완료'
+		AND t5.check_in <![CDATA[ >= ]]>
+		#{checkinDt}
+		AND t5.check_out <![CDATA[<= ]]>
+		#{checkoutDt}
+
+		)
+		ORDER BY T3.MIN_PRICE
+	</select>
+
+	<!-- 관리자 호텔 전체 리스트 -->
+	<select id="adminHotelAllList" resultType="hotel">
+		<![CDATA[
+		
+			SELECT HOTEL_IDX, HOTEL_THUMNAIL, HOTEL_NAME , HOTEL_CITY , HOTEL_COUNTRY, HOTEL_TEL, FILE_NAME
+			FROM HOTEL
+			ORDER BY HOTEL_IDX DESC
+		]]>
+
+	</select>
+
+	<insert id="hotelInsert">
+		<![CDATA[
+			
+			INSERT INTO HOTEL(HOTEL_IDX, 
+			                  HOTEL_NAME, 
+			                  HOTEL_COUNTRY, 
+			                  HOTEL_CITY,  
+			                  HOTEL_TEL, 
+			                  HOTEL_INFO,
+			                  FILE_NAME
+			                  )
+				       VALUES(HOTEL_SEQ.NEXTVAL, 
+				             #{hotelName}, 
+				             #{hotelCountry}, 
+				             #{hotelCity}, 
+				             #{hotelTel}, 
+				             #{hotelInfo},
+				         	 #{fileName}
+				         	 ) 
+
+		]]>
+	</insert>
+
+	<delete id="ajaxDelete" parameterType="hashmap">
+		DELETE FROM HOTEL
+		WHERE HOTEL_IDX IN
+		<foreach collection="hotelIdxs" item="hotelIdx" index="index"
+			open="(" separator="," close=")">
+			#{hotelIdx}
+		</foreach>
+	</delete>
+
+	<!-- 룸딜리트 -->
+	<delete id="ajaxRoomDelete" parameterType="hashmap">
+
+		DELETE FROM ROOM
+		WHERE HOTEL_IDX IN
+		<foreach collection="hotelIdxs" item="hotelIdx" index="index"
+			open="(" separator="," close=")">
+			#{hotelIdx}
+		</foreach>
+	</delete>
+
+
+
+	<select id="adminHotelDetail" resultType="hotel">
+		<![CDATA[
+		
+		SELECT HOTEL_IDX, HOTEL_NAME, HOTEL_CITY, HOTEL_COUNTRY,
+		       HOTEL_TEL, HOTEL_INFO, FILE_NAME
+		FROM   HOTEL
+		WHERE  HOTEL_IDX = #{hotelIdx}
+		]]>
+
+	</select>
+
+	<update id="hotelUpdate" parameterType="hotel">
+
+		UPDATE HOTEL
+		SET
+		HOTEL_NAME = #{hotelName}, HOTEL_CITY = #{hotelCity},
+		HOTEL_COUNTRY=
+		#{hotelCountry}, HOTEL_TEL = #{hotelTel},
+		HOTEL_INFO = #{hotelInfo},
+		HOTEL_THUMNAIL = #{hotelThumNail}
+		WHERE HOTEL_IDX =
+		#{hotelIdx}
+
+	</update>
+
+	<!-- 유저입장에서 보는 호텔 상세보기 -->
+	<select id="getHotelOne" resultType="hotel">
+		SELECT HOTEL_NAME,HOTEL_INFO
+		FROM HOTEL
+		WHERE HOTEL_IDX = #{hotelIdx}
+	</select>
+
+	<!-- 유저입장에서 보는 호텔의 방 리스트 -->
+	<select id="getRoomList" parameterType="hotel"
+		resultType="hotel">
+
+		SELECT H.HOTEL_IDX, R.HOTEL_IDX, R.ROOM_IDX, R.ROOM_TYPE,
+		R.ROOM_PRICE,
+		R.PEOPLE_STANDARD
+		FROM HOTEL H
+		INNER JOIN ROOM R
+		ON
+		H.HOTEL_IDX = R.HOTEL_IDX
+		WHERE H.HOTEL_IDX = #{hotelIdx}
+	</select>
+
+	<select id="ajaxHotelSearch" resultType="hotel">
+
+		SELECT
+		t0.*, min_price
+		FROM hotel t0
+		inner join ( SELECT
+		t1.hotel_idx,
+		t1.hotel_name,
+		MIN(t2.room_price) min_price,
+		COUNT(t2.room_idx)
+		room_cnt,
+		SUM( t9.review_star_grade) grade
+		FROM hotel t1
+		LEFT OUTER JOIN
+		room t2 ON
+		t1.hotel_idx = t2.hotel_idx
+		<if test="startPrice != null and startPrice != '' and  endPrice != null and endPrice != ''">
+		AND t2.room_price <![CDATA[ >= ]]> #{startPrice} 
+		AND t2.room_price <![CDATA[ <= ]]> #{endPrice}
+		</if>
+		LEFT OUTER JOIN HOTEL_review t9
+		on
+		t1.hotel_idx = t9.hotel_idx
+		GROUP BY t1.hotel_idx, t1.hotel_name
+		) t3
+		on t0.hotel_idx = t3.hotel_idx
+		WHERE
+		1 = 1
+		AND t3.room_cnt > ( SELECT
+		count(*)
+		FROM
+		room t4
+		INNER JOIN hotel_booking t5 ON
+		t4.room_idx =
+		t5.room_idx
+		WHERE
+		1 = 1
+		AND t4.hotel_idx = t3.hotel_idx
+		AND t5.hbk_status
+		= '예약완료'
+		<if test="checkinDt != null and checkinDt != '' ">
+			AND t5.check_in <![CDATA[ >= ]]>
+			TO_DATE(#{checkinDt}, 'yyyy-mm-dd')
+		</if>
+		<if test="checkoutDt != null and checkoutDt != '' ">
+			AND t5.check_out 	<![CDATA[ <=  ]]>
+			TO_DATE(#{checkoutDt}, 'yyyy-mm-dd')
+		</if>
+		)
+
+		<if test="hotelSearch != null and hotelSearch != '' ">
+			AND (t0.HOTEL_NAME LIKE '%'|| #{hotelSearch} ||'%' OR
+			t0.HOTEL_CITY LIKE '%'|| #{hotelSearch} ||'%' OR
+			t0.HOTEL_COUNTRY LIKE
+			'%'|| #{hotelSearch}||'%'
+			)
+		</if>
+
+
+		<if test="totalPeopleCnt != null and totalPeopleCnt != '' ">
+			AND EXISTS (
+			SELECT 1
+			FROM ROOM
+			WHERE 1 = 1
+			AND HOTEL_IDX = T0.HOTEL_IDX
+			AND PEOPLE_STANDARD  <![CDATA[>=]]>
+			#{totalPeopleCnt}
+			) /* 가격검색 */
+		</if>
+
+		<if test="roomNumber != null and roomNumber != '' ">
+			AND t3.room_cnt <![CDATA[>]]>
+			#{roomNumber}
+		</if>
+
+		<if test="grade != null and grade != '' ">
+			AND t3.grade  <![CDATA[>=]]>
+			#{grade} /* 별점검색 */
+		</if>
+
+		<if
+			test="startPrice != null and startPrice != '' and  endPrice != null and endPrice != ''">
+			AND EXISTS (
+			SELECT 1
+			FROM ROOM
+			WHERE 1 = 1
+			AND HOTEL_IDX = T0.HOTEL_IDX
+			AND ROOM_PRICE  <![CDATA[>=]]>
+			#{startPrice}
+			AND ROOM_PRICE  <![CDATA[<=]]>
+			#{endPrice}
+			) /* 가격검색 */
+		</if>
+
+		<choose>
+			<when test="orderType != null and orderType == 1 ">
+				ORDER BY t0.HOTEL_GRADE DESC /* 호텔 등급순 */
+			</when>
+			<when test="orderType != null and orderType == 2 ">
+				ORDER BY T3.MIN_PRICE ASC /* 낮은가격순 */
+			</when>
+			<when test="orderType != null and orderType == 3 ">
+				ORDER BY T3.MIN_PRICE DESC /* 높은가격순 */
+			</when>
+		</choose>
+
+	</select>
+
+	<!-- 호텔의 객실 리스트 -->
+	<select id="adminRoomList" resultType="hotel">
+
+		SELECT H.HOTEL_IDX,
+		H.HOTEL_NAME, R.ROOM_IDX, R.ROOM_TYPE, R.ROOM_PRICE,
+		R.PEOPLE_STANDARD
+		, COUNT(R.ROOM_TYPE) ROOMCOUNT
+		FROM HOTEL H
+		JOIN ROOM R
+		ON H.HOTEL_IDX =
+		R.HOTEL_IDX
+		WHERE H.HOTEL_IDX = #{hotelIdx}
+		GROUP BY H.HOTEL_IDX,
+		R.ROOM_IDX, H.HOTEL_NAME, R.ROOM_TYPE, R.ROOM_PRICE,
+		R.PEOPLE_STANDARD
+
+	</select>
+
+	<!-- 룸 등록 -->
+	<insert id="roomInsert">
+
+		INSERT INTO ROOM(
+		HOTEL_IDX,
+		ROOM_IDX,
+		ROOM_TYPE,
+		ROOM_PRICE,
+		ROOM_IMAGE,
+		PEOPLE_STANDARD
+		)
+		VALUES(
+		#{hotelIdx},
+		HOTEL_ROOM_SEQ.NEXTVAL,
+		#{roomType},
+		#{roomPrice},
+		#{fileName},
+		#{peopleStandard}
+		)
+
+	</insert>
+
+
+</mapper>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Admin-Header -->
 <%@include file="../include/header-admin.jsp"%>
 <!-- ================================
@@ -50,139 +51,22 @@
 											</tr>
 										</thead>
 										<tbody>
+											<c:forEach items="${user}" var="user">
 											<tr>
-												<th scope="row">1</th>
+												<th scope="row"><c:out value="${user.userNum}"/></th>
 												<td>
 													<div class="table-content">
-														<h3 class="title">Alex Smith</h3>
+														<h3 class="title"><c:out value="${user.userName}"/></h3>
 													</div>
 												</td>
-												<td>alexsmith@gmail.com</td>
-												<td>United States</td>
-												<td>New York</td>
+												<td><c:out value="${user.userEmail}" /></td>
+												<td><c:out value="${user.userAddress}" /></td>
+												<td><c:out value="${user.userId}" /></td>
+												<td><c:out value="${user.userMobile}" /></td>
 												<td><span class="badge badge-success py-1 px-2">Active</span></td>
 												<td></td>
 											</tr>
-											<tr>
-												<th scope="row">2</th>
-												<td>
-													<div class="table-content">
-														<h3 class="title">David Matin</h3>
-													</div>
-												</td>
-												<td>davidmartin@gmail.com</td>
-												<td>United States</td>
-												<td>New York</td>
-												<td><span
-													class="badge badge-warning text-white py-1 px-2">InActive</span></td>
-												<td></td>
-											</tr>
-											<tr>
-												<th scope="row">3</th>
-												<td>
-													<div class="table-content">
-														<h3 class="title">Mark Hardson</h3>
-													</div>
-												</td>
-												<td>markhardson@gmail.com</td>
-												<td>United States</td>
-												<td>New York</td>
-												<td><span class="badge badge-success py-1 px-2">Active</span></td>
-												<td></td>
-											</tr>
-											<tr>
-												<th scope="row">4</th>
-												<td>
-													<div class="table-content">
-														<h3 class="title">John Doe</h3>
-													</div>
-												</td>
-												<td>johndoe@gmail.com</td>
-												<td>United States</td>
-												<td>New York</td>
-												<td><span class="badge badge-success py-1 px-2">Active</span></td>
-												<td></td>
-											</tr>
-											<tr>
-												<th scope="row">5</th>
-												<td>
-													<div class="table-content">
-														<h3 class="title">Josh Purdila</h3>
-													</div>
-												</td>
-												<td>joshpurdila@gmail.com</td>
-												<td>United States</td>
-												<td>New York</td>
-												<td><span class="badge badge-success py-1 px-2">Active</span></td>
-												<td></td>
-											</tr>
-											<tr>
-												<th scope="row">6</th>
-												<td>
-													<div class="table-content">
-														<h3 class="title">Amir Hamja</h3>
-													</div>
-												</td>
-												<td>amirhamja@gmail.com</td>
-												<td>United States</td>
-												<td>New York</td>
-												<td><span class="badge badge-success py-1 px-2">Active</span></td>
-												<td></td>
-											</tr>
-											<tr>
-												<th scope="row">7</th>
-												<td>
-													<div class="table-content">
-														<h3 class="title">Peter Micahel</h3>
-													</div>
-												</td>
-												<td>petermicahel@gmail.com</td>
-												<td>United States</td>
-												<td>New York</td>
-												<td><span
-													class="badge badge-warning text-white py-1 px-2">Inactive</span></td>
-												<td></td>
-											</tr>
-											<tr>
-												<th scope="row">8</th>
-												<td>
-													<div class="table-content">
-														<h3 class="title">John Smith</h3>
-													</div>
-												</td>
-												<td>johnsmith@gmail.com</td>
-												<td>United States</td>
-												<td>New York</td>
-												<td><span class="badge badge-success py-1 px-2">Active</span></td>
-												<td></td>
-											</tr>
-											<tr>
-												<th scope="row">9</th>
-												<td>
-													<div class="table-content">
-														<h3 class="title">Amir Sohail</h3>
-													</div>
-												</td>
-												<td>amirsohail@gmail.com</td>
-												<td>United States</td>
-												<td>New York</td>
-												<td><span class="badge badge-success py-1 px-2">Active</span></td>
-												<td></td>
-											</tr>
-											<tr>
-												<th scope="row">10</th>
-												<td>
-													<div class="table-content">
-														<h3 class="title">Jack Bauer</h3>
-													</div>
-												</td>
-												<td>jackbauer@gmail.com</td>
-												<td>United States</td>
-												<td>New York</td>
-												<td><span class="badge badge-success py-1 px-2">Active</span></td>
-												<td></td>
-											</tr>
-
+											</c:forEach>	
 										</tbody>
 									</table>
 								</div>
@@ -196,24 +80,33 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<nav aria-label="Page navigation example">
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link page-link-nav"
-									href="#" aria-label="Previous"> <span aria-hidden="true"><i
-											class="la la-angle-left"></i></span> <span class="sr-only">Previous</span>
-								</a></li>
-								<li class="page-item"><a class="page-link page-link-nav"
-									href="#">1</a></li>
-								<li class="page-item active"><a
-									class="page-link page-link-nav" href="#">2 <span
-										class="sr-only">(current)</span></a></li>
-								<li class="page-item"><a class="page-link page-link-nav"
-									href="#">3</a></li>
-								<li class="page-item"><a class="page-link page-link-nav"
-									href="#" aria-label="Next"> <span aria-hidden="true"><i
-											class="la la-angle-right"></i></span> <span class="sr-only">Next</span>
-								</a></li>
-							</ul>
-						</nav>
+								<ul class="pagination">
+									<li class="page-item">
+											<a class="page-link page-link-nav"
+												href="admin-dashboard-user.do${pageMaker.makeQuery(pageMaker.startPage - 1)}"
+												aria-label="Previous"> <span aria-hidden="true"><i
+													class="la la-angle-left"></i></span> <span class="sr-only">Previous</span>
+											</a>
+										</li>
+
+									<c:forEach begin="${pageMaker.startPage}"
+										end="${pageMaker.endPage}" var="idx">
+										<li class="page-item active"><a
+											class="page-link page-link-nav"
+											href="admin-dashboard-user.do${pageMaker.makeQuery(idx)}"><span
+												class="sr-only">(current)</span>${idx}</a></li>
+									</c:forEach>
+
+
+									<li class="page-item">
+											<a class="page-link page-link-nav"
+												href="admin-dashboard-flying-list.do${pageMaker.makeQuery(pageMaker.endPage + 1)}"
+												aria-label="Next"> <span aria-hidden="true"><i
+													class="la la-angle-right"></i></span> <span class="sr-only">Next</span>
+											</a>
+										</li>
+								</ul>
+							</nav>
 					</div>
 				</div>
 			</div>

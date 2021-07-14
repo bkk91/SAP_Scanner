@@ -29,22 +29,6 @@
 					</div>
 					<div class="form-content">
 						<div class="payment-received-list">
-							<!-- <div class="d-flex align-items-center">
-                                <i class="la la-check icon-element flex-shrink-0 mr-3 ml-0"></i>
-                                <div>
-                                    <h3 class="title pb-1">예약 확인</h3>
-                                   
-                                </div>
-                            </div> -->
-							<!--   <ul class="list-items py-4">
-                                <li><i class="la la-check text-success mr-2"></i><strong class="text-black">EnVision Hotel Boston</strong> is Expecting you on <strong class="text-black">01 june</strong></li>
-                                <li><i class="la la-check text-success mr-2"></i>Your <strong class="text-black">payment</strong> will be handled by EnVision Hotel Boston, the <strong class="color-text-2">'Payment'</strong> section below has more details</li>
-                                <li><i class="la la-check text-success mr-2"></i>Make changes to your booking or ask the properly a question in just a few clicks</li>
-                            </ul> -->
-							<!--  <div class="btn-box pb-4">
-                                <a href="#" class="theme-btn mb-2 mr-2">Make changes to your booking</a>
-                                <a href="#" class="theme-btn mb-2 theme-btn-transparent">Make your booking in the app</a>
-                            </div> -->
 							<h3 class="title">
 								<a href="#" class="text-black">EnVision Hotel Boston</a>
 							</h3>

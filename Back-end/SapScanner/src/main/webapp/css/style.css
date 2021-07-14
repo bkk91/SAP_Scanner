@@ -770,6 +770,67 @@ body {
     flex: 0 0 100%;
     max-width: 100%; } }
 
+/*== 버튼 수정 == */
+.update_btn_profile {
+  font-size: 15px;
+  color: #fff;
+  line-height: 45px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #287dfa;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
+  display: inline-block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #287dfa;
+  font-weight: 500; }
+  .theme-btn:hover {
+    background-color: #fff;
+    color: #287dfa; }
+
+/*=== update_btn_profile-small ====*/
+.update-btn-small {
+  line-height: 35px;
+  padding-left: 15px;
+  padding-right: 15px; }
+  
+  .delete-btn {
+  font-size: 15px;
+  color: #fff;
+  line-height: 45px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #287dfa;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
+  display: inline-block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #287dfa;
+  font-weight: 500; }
+  .theme-btn:hover {
+    background-color: #fff;
+    color: #287dfa; }
+
+/*=== delete-btn-small ====*/
+.delete-btn-small {
+  line-height: 35px;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+
+
 /*=== theme-btn ====*/
 .theme-btn {
   font-size: 15px;
@@ -9005,22 +9066,21 @@ body {
   top: -100px; }
 
 /*===== copy-right =======*/
-@media only screen and (min-width: 991px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
   .copy-right {
     text-align: center; } }
 
-@media only screen and (min-width: 991px) and (max-width: 991px) {
+@media only screen and (min-width: 480px) and (max-width: 767px) {
   .copy-right {
     text-align: center; } }
 
-@media only screen and (min-width: 991px) and (max-width: 991px) {
+@media only screen and (min-width: 320px) and (max-width: 479px) {
   .copy-right {
     text-align: center; } }
 
 /*===== copy__desc =======*/
 .copy__desc {
-  font-size: 15px;
-  text-align: center; }
+  font-size: 15px; }
   .copy__desc a {
     color: #5d646d;
     -webkit-transition: all 0.3s;
@@ -9035,19 +9095,19 @@ body {
     color: #287dfa; }
 
 /*===== copy-right-content =======*/
-@media only screen and (min-width: 991px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
   .copy-right-content {
     -ms-flex-pack: center !important;
     justify-content: center !important;
     text-align: center !important; } }
 
-@media only screen and (min-width: 991px) and (max-width: 991px) {
+@media only screen and (min-width: 480px) and (max-width: 767px) {
   .copy-right-content {
     -ms-flex-pack: center !important;
     justify-content: center !important;
     text-align: center !important; } }
 
-@media only screen and (min-width: 991px) and (max-width: 991px) {
+@media only screen and (min-width: 320px) and (max-width: 479px) {
   .copy-right-content {
     -ms-flex-pack: center !important;
     justify-content: center !important;

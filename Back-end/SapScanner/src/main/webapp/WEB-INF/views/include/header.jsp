@@ -19,18 +19,18 @@
 	rel="stylesheet">
 
 <!-- Template CSS Files -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/bootstrap-select.min.css">
-<link rel="stylesheet" href="css/line-awesome.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
-<link rel="stylesheet" href="css/daterangepicker.css">
-<link rel="stylesheet" href="css/animate.min.css">
-<link rel="stylesheet" href="css/animated-headline.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/flag-icon.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/line-awesome.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/daterangepicker.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/animated-headline.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/flag-icon.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 
 <body>
@@ -90,7 +90,7 @@
 										class="theme-btn theme-btn-small theme-btn-transparent mr-1"
 										data-toggle="modal" data-target="#signupPopupForm">회원가입</a> <a
 										href="#" class="theme-btn theme-btn-small" data-toggle="modal"
-										data-target="#loginPopupForm">로그인</a>
+										data-target="#loginPopupForm" id="btnLogin">로그인</a>
 								</div>
 							</div>
 						</div>
@@ -118,23 +118,21 @@
 								<nav>
 									<ul>
 										<li><a href="index.jsp">홈 </a></li>
-										<li><a href="flight-search.do">항공권 </i></a></li>
-										<li><a href="hotel-search-result.do">호텔</a></li>
+										<li><a href="search/flight-search.do">항공권 </i></a></li>
+										<li><a href="#">호텔</a></li>
 										<li><a href="#">페이지<i class="la la-angle-down"></a></i>
 											<div class="dropdown-menu-item mega-menu">
 												<ul class="row no-gutters">
 													<li class="col-lg-5 mega-menu-item">
 														<ul>
-															<li><a href="faq.do">문의사항</a></li>
 															<li><a href="about.do">소개</a></li>
 															<li><a href="services.do">서비스</a></li>
 														</ul>
 													</li>
 													<li class="col-lg-5 mega-menu-item">
 														<ul>
-															<li><a href="admin-dashboard.do">관리자 대쉬보드</a></li>
+															<li><a href="admin/admin-dashboard.do">관리자 대쉬보드</a></li>
 															<li><a href="user-dashboard.do">사용자 대쉬보드</a></li>
-															<li><a href="recover.do">비밀번호 찾기</a></li>
 														</ul>
 													</li>
 												</ul>
@@ -142,11 +140,11 @@
 									</ul>
 								</nav>
 							</div>
-							<!-- end main-menu-content -->
+							<!-- end main-menu-content --><!-- 
 							<div class="nav-btn">
 								<a href="loading.do" class="theme-btn">여행가이드
 									신청</a>
-							</div>
+							</div> -->
 							<!-- end nav-btn -->
 						</div>
 						<!-- end menu-wrapper -->

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserDAO">
+	<!-- 회원 정보 입력 (회원가입) -->
+	<insert id="register" parameterType="user">
+		<![CDATA[
+			INSERT INTO USER_TABLE (USER_NUM, USER_ID, USER_PASSWORD, USER_NAME, USER_BIRTHDATE, USER_GENDER, USER_EMAIL, 
+			USER_MOBILE, USER_ADDRESS, USER_GRADE) VALUES ((select nvl(max(user_Num), 0) + 1 FROM USER_TABLE), 
+			#{userId}, #{userPassword}, #{userName}, #{userBirthdate}, 
+			#{userGender}, #{userEmail}, #{userMobile}, #{userAddress}, (1))
+		]]>
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="login" resultType="user">
+		SELECT *
+		FROM USER_TABLE
+		WHERE
+		USER_ID = #{userId}
+		AND USER_PASSWORD = #{userPassword}
+	</select>
+
+	<!-- 로그인 회원 정보 출력 -->
+	<select id="getUserInfo" resultType="user">
+		SELECT USER_NAME,
+		USER_BIRTHDATE, USER_MOBILE, USER_ADDRESS, USER_EMAIL
+		FROM USER_TABLE
+		WHERE USER_NUM = #{userNum}
+	</select>
+
+	<!-- 회원 정보 수정 : 프로필 -->
+	<update id="updateUserProfile" parameterType="user">
+		<![CDATA[
+			UPDATE USER_TABLE SET 
+				USER_NAME = #{userName},
+            	USER_MOBILE = #{userMobile},
+            	USER_ADDRESS = #{userAddress}
+            	WHERE USER_NUM = #{userNum}		
+		]]>
+	</update>
+
+	<!-- 회원 정보 수정 : 이메일 -->
+	<update id="updateUserEmail" parameterType="user">
+		<![CDATA[
+			UPDATE USER_TABLE SET 
+				USER_EMAIL = #{userEmail}
+            	WHERE USER_NUM = #{userNum}		
+		]]>
+	</update>
+	<!-- 회원 정보 수정 : 비밀번호 -->
+	<update id="updateUserPassword" parameterType="user">
+		<![CDATA[
+			UPDATE USER_TABLE SET 
+				USER_PASSWORD = #{userPassword}
+            	WHERE USER_NUM = #{userNum}		
+		]]>
+	</update>
+
+	<!-- 회원 정보 보기 -->
+	<select id="getUser" resultType="user">
+		<![CDATA[
+			SELECT 	USER_NUM, 
+        		USER_NAME, 
+        		USER_EMAIL, 
+        		USER_ADDRESS, 
+        		USER_ID, 
+        		USER_MOBILE
+			FROM (
+        		SELECT 	USER_NUM, 
+                		USER_NAME, 
+                		USER_EMAIL, 
+                		USER_ADDRESS, 
+                		USER_ID, 
+                		USER_MOBILE,
+                		ROW_NUMBER() OVER(ORDER BY USER_NUM DESC) AS RNUM
+        		FROM USER_TABLE
+			)FLIGHT
+			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+			ORDER BY USER_NUM DESC
+		]]>
+	</select>
+
+	<!-- 회원 정보 삭제 (회원탈퇴) -->
+	<delete id="deleteUser" parameterType="user">
+		<![CDATA[
+			DELETE USER_TABLE
+			WHERE USER_NUM = #{userNum}
+		]]>
+	</delete>
+</mapper>

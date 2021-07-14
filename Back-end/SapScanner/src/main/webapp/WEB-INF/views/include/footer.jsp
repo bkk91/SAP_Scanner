@@ -45,8 +45,12 @@
 						<li><a
 							href="https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=saleru1004&logNo=80205857973">관광지
 								소개</a></li>
-						<li><a href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0">네이버 블로그 </a></li>
-						<li><a href="https://www.kakaocorp.com/page/service/service/KakaoStory?lang=en">카카오 스토리 </a></li>
+						<li><a
+							href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0">네이버
+								블로그 </a></li>
+						<li><a
+							href="https://www.kakaocorp.com/page/service/service/KakaoStory?lang=en">카카오
+								스토리 </a></li>
 					</ul>
 				</div>
 				<!-- end footer-item -->
@@ -132,12 +136,11 @@
 <!-- ================================
          Login/register modal
 ================================= -->
-<%@include file="../auth/login.jsp"%>
-<%@include file="../auth/register.jsp"%>
+<%@include file="../user/login.jsp"%>
+<%@include file="../user/register.jsp"%>
 
 <!-- Template JS Files -->
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/jquery-ui.js"></script>
+
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-select.min.js"></script>

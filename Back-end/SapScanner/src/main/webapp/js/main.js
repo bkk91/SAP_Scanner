@@ -27,7 +27,6 @@ Author Email:   contact@tecydevs.com
 18: ripple-bg
 19: Ui range slider
 20: Filer uploader
-21: Daterangepicker
 22: Bootstrap select picker
 23: Bootstrap tooltip
 24: Add multiple flight function
@@ -482,7 +481,7 @@ Author Email:   contact@tecydevs.com
         }
 
         /*======= ui price range slider ========*/
-        if ($(rangeSlider).length) {
+        /*if ($(rangeSlider).length) {
             $(rangeSlider).slider({
                 range: true,
                 min: 0,
@@ -494,10 +493,10 @@ Author Email:   contact@tecydevs.com
             });
         }
         $(rangeSliderAmount).val( "$" + $(rangeSlider).slider( "values", 0 ) +
-            " - $" + $(rangeSlider).slider( "values", 1 ) );
+            " - $" + $(rangeSlider).slider( "values", 1 ) );*/
 
         /*======= ui price range slider 2 ========*/
-        if ($(rangeSliderTwo).length) {
+        /*if ($(rangeSliderTwo).length) {
             $(rangeSliderTwo).slider({
                 range: true,
                 min: 0,
@@ -510,21 +509,21 @@ Author Email:   contact@tecydevs.com
         }
 
         $(rangeSliderAmountTwo).val( "$" + $(rangeSliderTwo).slider( "values", 0 ) +
-            " - $" + $(rangeSliderTwo).slider( "values", 1 ) );
+            " - $" + $(rangeSliderTwo).slider( "values", 1 ) );*/
 
 
         /*==== Daterangepicker =====*/
-        if ($(dateRangePicker).length) {
+        /*if ($(dateRangePicker).length) {
             $(dateRangePicker).daterangepicker({
                 opens: 'right',
                 locale: {
                     format: 'DD/MM/YYYY',
                 }
             });
-        }
+        }*/
 
         /*==== Daterangepicker =====*/
-        if ($(dateRangePickerTwo).length) {
+        /*if ($(dateRangePickerTwo).length) {
             $(dateRangePickerTwo).daterangepicker({
                 singleDatePicker: true,
                 opens: 'right',
@@ -532,7 +531,7 @@ Author Email:   contact@tecydevs.com
                     format: 'DD/MM/YYYY',
                 }
             });
-        }
+        }*/
 
         /*==== Bootstrap select picker =====*/
         if ($(bootstrapSelectMenu).length) {

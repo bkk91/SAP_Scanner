@@ -4,113 +4,209 @@
 
 <mapper namespace="FlyingDAO">
 
-	<!-- 항공 스케쥴 입력 resultMap -->
-	<resultMap id="scheduleResult" type="flying">
-		<id property="vihicleId" column="VIHICLE_ID"/>
-		<result property="airlineNm" column="AIRLINE_NM"/>
-		<result property="depAirportId" column="DEP_AIRPORT_ID"/>
-		<result property="depAirportNm" column="DEP_AIRPORT_NM"/>
-		<result property="depCityNm" column="DEP_CITY_NM"/>
-		<result property="depPlandTime" column="DEP_PLAND_TIME"/>
-		<result property="arrAirportId" column="ARR_AIRPORT_ID"/>
-		<result property="arrAirportNm" column="ARR_AIRPORT_NM"/>
-		<result property="arrCityNm" column="ARR_CITY_NM"/>
-		<result property="arrPlandTime" column="ARR_PLAND_TIME"/>
-		<result property="economyCharge" column="ECONOMY_CHARGE"/>
-		<result property="prestigeCharge" column="PRESTIGE_CHARGE"/>
-		<result property="firstCharge" column="FIRST_CHARGE"/>
-	</resultMap>
+	<!-- 항공권 스케쥴 입력 (OpenAPI_JsonParsing) -->
+	<insert id="scheduleAPI" parameterType="hashMap">
+      <![CDATA[
+            INSERT INTO FLIGHT_SCHEDULE(VIHICLE_ID, AIRLINE_NM, DEP_AIRPORT_ID, DEP_AIRPORT_NM, DEP_CITY_NM, DEP_PLAND_TIME, ARR_AIRPORT_ID, ARR_AIRPORT_NM, 
+            ARR_CITY_NM, ARR_PLAND_TIME, ECONOMY_CHARGE, PRESTIGE_CHARGE, FIRST_CHARGE)
+            VALUES(#{VIHICLE_ID}, #{AIRLINE_NM}, #{DEP_AIRPORT_ID}, #{DEP_AIRPORT_NM},
+            #{DEP_CITY_NM}, TO_DATE(#{DEP_PLAND_TIME}, 'YYYY-MM-DD HH24:MI'), #{ARR_AIRPORT_ID}, #{ARR_AIRPORT_NM},
+            #{ARR_CITY_NM}, TO_DATE(#{ARR_PLAND_TIME}, 'YYYY-MM-DD HH24:MI'), #{ECONOMY_CHARGE}, #{PRESTIGE_CHARGE},
+            #{FIRST_CHARGE})      
+      ]]>
+	</insert>
 
-	<!-- 항공권 스케쥴 입력 -->
+	<!-- 관리자페이지용 (START) -->
+
+	<!-- 항공권 스케쥴 보기 -->
+	<select id="getSchedule" resultType="flying"
+		parameterType="criteria">
+		<![CDATA[
+			SELECT 	VIHICLE_ID, 
+					AIRLINE_NM, 
+					DEP_AIRPORT_ID, 
+					DEP_AIRPORT_NM, 
+					DEP_CITY_NM, 
+					DEP_PLAND_TIME, 
+					ARR_AIRPORT_ID, 
+					ARR_AIRPORT_NM, 
+					ARR_CITY_NM, 
+					ARR_PLAND_TIME, 
+					ECONOMY_CHARGE, 
+					PRESTIGE_CHARGE, 
+					FIRST_CHARGE
+			FROM (
+				SELECT 	VIHICLE_ID,
+						AIRLINE_NM, 
+						DEP_AIRPORT_ID, 
+						DEP_AIRPORT_NM, 
+						DEP_CITY_NM, 
+						DEP_PLAND_TIME, 
+						ARR_AIRPORT_ID, 
+						ARR_AIRPORT_NM, 
+						ARR_CITY_NM, 
+						ARR_PLAND_TIME, 
+						ECONOMY_CHARGE, 
+						PRESTIGE_CHARGE, 
+						FIRST_CHARGE,
+						ROW_NUMBER() OVER(ORDER BY VIHICLE_ID DESC) AS RNUM
+				FROM FLIGHT_SCHEDULE
+			) FLIGHT
+			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+			ORDER BY VIHICLE_ID DESC
+		]]>
+	</select>
+	<!-- 페이징 카운트 -->
+	<select id="listCount" resultType="int">
+	<![CDATA[
+		SELECT COUNT(VIHICLE_ID)
+		FROM FLIGHT_SCHEDULE
+		WHERE VIHICLE_ID > 0 
+	]]>
+	</select>
+
+	<!-- 선택한 항공권 스케쥴 보기 -->
+	<select id="singleSchedule" resultType="flying">
+		<![CDATA[
+			SELECT VIHICLE_ID, AIRLINE_NM, 
+			DEP_AIRPORT_ID, DEP_AIRPORT_NM, DEP_CITY_NM, DEP_PLAND_TIME, 
+			ARR_AIRPORT_ID, ARR_AIRPORT_NM, ARR_CITY_NM, ARR_PLAND_TIME, 
+			ECONOMY_CHARGE, PRESTIGE_CHARGE, FIRST_CHARGE
+			FROM FLIGHT_SCHEDULE
+			WHERE VIHICLE_ID = #{vihicleId}
+		]]>
+	</select>
+
+	<!-- 항공권 스케쥴 입력 (관리자페이지) -->
 	<insert id="insertSchedule" parameterType="flying">
       <![CDATA[
-            INSERT INTO FLIGHT_SCHEDULE(VIHICLE_ID, AIRLINE_NM, DEP_AIRPORT_ID, 
-            DEP_AIRPORT_NM, DEP_CITY_NM, DEP_PLAND_TIME, ARR_AIRPORT_ID, ARR_AIRPORT_NM, 
+            INSERT INTO FLIGHT_SCHEDULE(VIHICLE_ID, AIRLINE_NM, DEP_AIRPORT_ID, DEP_AIRPORT_NM, DEP_CITY_NM, DEP_PLAND_TIME, ARR_AIRPORT_ID, ARR_AIRPORT_NM, 
             ARR_CITY_NM, ARR_PLAND_TIME, ECONOMY_CHARGE, PRESTIGE_CHARGE, FIRST_CHARGE)
             VALUES(#{vihicleId}, #{airlineNm}, #{depAirportId}, #{depAirportNm},
-            #{depCityNm}, #{depPlandTime}, #{arrAirportId}, #{arrAirportNm},
-            #{arrCityNm}, #{arrPlandTime}, #{economyCharge}, #{prestigeCharge},
+            #{depCityNm}, TO_DATE(#{depPlandTime}, 'YYYYMMDD HH24:MI'), #{arrAirportId}, #{arrAirportNm},
+            #{arrCityNm}, TO_DATE(#{arrPlandTime}, 'YYYYMMDD HH24:MI'), #{economyCharge}, #{prestigeCharge},
             #{firstCharge})      
       ]]>
 	</insert>
-	
+
 	<!-- 항공권 스케쥴 수정 -->
 	<update id="updateSchedule" parameterType="flying">
 	  <![CDATA[
 	  		UPDATE FLIGHT_SCHEDULE
-	  		SET AIRLINE_NM = #{airlineNm}, DEP_AIRPORT_ID = #{depAirportId}, DEP_AIRPORT_NM = #{depAirportNm},
-	  			DEP_CITY_NM = #{depCityNm}, DEP_PLAND_TIME = #{depPlandTime}, ARR_AIRPORT_ID = #{arrAirportId},
-	  			ARR_AIRPORT_NM = #{arrAirportNm}, ARR_CITY_NM = #{arrCityNm}, ARR_PLAND_TIME = #{arrPlandTime},
-	  			ECONOMY_CHARGE = #{economyCharge}, PRESTIGE_CHARGE = #{prestigeCharge}, FIRST_CHARGE = {firstCharge}
-	  		WHERE VIHICLE_ID = #{vihicleId}
+			SET AIRLINE_NM = #{airlineNm}, 
+			DEP_AIRPORT_ID = #{depAirportId}, 
+			DEP_AIRPORT_NM = #{depAirportNm}, 
+			DEP_CITY_NM = #{depCityNm}, 
+			DEP_PLAND_TIME = TO_DATE(#{depPlandTime}, 'YYYYMMDD HH24:MI'), 
+			ARR_AIRPORT_ID = #{arrAirportId}, 
+			ARR_AIRPORT_NM = #{arrAirportNm}, 
+			ARR_CITY_NM = #{arrCityNm}, 
+			ARR_PLAND_TIME = TO_DATE(#{arrPlandTime}, 'YYYYMMDD HH24:MI'), 
+			ECONOMY_CHARGE = #{economyCharge}, 
+			PRESTIGE_CHARGE = #{prestigeCharge}, 
+			FIRST_CHARGE = #{firstCharge}
+			WHERE VIHICLE_ID = #{vihicleId}
 	  ]]>
 	</update>
-	
+
 	<!-- 항공권 스케쥴 삭제 -->
 	<delete id="deleteSchedule" parameterType="flying">
-	<![CDATA[
-	  		DELETE FLIGHT_SCHEDULE
-      		WHERE VIHICLE_ID = #{vihicleId}
+	  <![CDATA[
+	  		DELETE FROM FLIGHT_SCHEDULE WHERE VIHICLE_ID = #{vihicleId}
 	  ]]>
 	</delete>
-	
+
+	<!-- 관리자페이지용 (END) -->
+
+	<!-- 검색기능 (START) -->
+
 	<!-- 편도 검색 조건 입력 후 출력 -->
-	<select id="getSingleSchedule" resultType="flying">
-      <![CDATA[
-      SELECT * FROM FLIGHT_SCHEDULE 
-      WHERE 1=1
-      ]]>
-      <if test="depCityAirportNm != null and depCityAirportNm != ''">
-      	AND DEP_CITY_NM LIKE '%' || #{depCityAirportNm}|| '%'
-      	OR DEP_AIRPORT_NM LIKE '%' || #{depCityAirportNm}|| '%'
-      </if>
-      <if test="arrCityAirportNm != null and arrCityAirportNm != ''">
-      	AND ARR_CITY_NM LIKE '%' || #{arrCityAirportNm}|| '%'
-      	OR ARR_AIRPORT_NM LIKE '%' || #{arrCityAirportNm}|| '%'
-      </if>
-      <if test="depPlandTime != null and depPlandTime != ''">
-      	AND DEP_PLAND_TIME LIKE '%' || #{depPlandTime} || '%'
-      </if>
-      <![CDATA[ 
-      UNION
-      INSERT INTO FLIGHT_SEAT
-      WHERE 1=1
-      ]]>
-      <if test="seatGrade != null and seatGrade != ''">
-      	AND SEAT_GRADE LIKE '%' || #{seatGrade}|| '%'
-      </if> 
-      <![CDATA[ 
-      ORDER BY economyCharge DESC;
-      ]]>
+	<select id="searchOneway" resultType="camelmap">
+		<![CDATA[
+		SELECT 
+    		A.VIHICLE_ID,
+    		A.AIRLINE_NM,
+    		A.DEP_AIRPORT_NM,
+    		A.DEP_CITY_NM,
+    		A.DEP_PLAND_TIME,
+    		A.ARR_AIRPORT_NM,
+    		A.ARR_CITY_NM,
+    		A.ARR_PLAND_TIME,
+    		A.ECONOMY_CHARGE,
+    		A.PRESTIGE_CHARGE,
+    		A.FIRST_CHARGE,
+    		B.SEAT_ID,
+    		B.SEAT_GRADE,
+    		B.SEAT_STATUS,
+    		B.TOT_COUNT_POSS
+		FROM FLIGHT_SCHEDULE A,
+     		 FLIGHT_SEAT B
+		WHERE A.VIHICLE_ID = B.VIHICLE_ID
+		AND (DEP_AIRPORT_NM = #{depAirportCityNm} OR DEP_CITY_NM = #{depAirportCityNm})
+		AND (ARR_AIRPORT_NM = #{arrAirportCityNm} OR ARR_CITY_NM = #{arrAirportCityNm})
+		AND TOT_COUNT_POSS >= #{totCount}
+		AND SEAT_GRADE = #{seatGrade}
+		ORDER BY DEP_PLAND_TIME
+		]]>
 	</select>
-	
+
 	<!-- 왕복 검색 조건 입력 후 출력 -->
-	<select id="getDoubleSchedule" resultType="flying">
-       <![CDATA[
-      SELECT * FROM FLIGHT_SCHEDULE 
-      WHERE 1=1
-      ]]>
-      <if test="depCityAirportNm != null and depCityAirportNm != ''">
-      	AND DEP_CITY_NM LIKE '%' || #{depCityAirportNm}|| '%'
-      	OR DEP_AIRPORT_NM LIKE '%' || #{depCityAirportNm}|| '%'
-      </if>
-      <if test="arrCityAirportNm != null and arrCityAirportNm != ''">
-      	AND ARR_CITY_NM LIKE '%' || #{arrCityAirportNm}|| '%'
-      	OR ARR_AIRPORT_NM LIKE '%' || #{arrCityAirportNm}|| '%'
-      </if>
-      <if test="depPlandTime != null and depPlandTime != ''">
-      	AND DEP_PLAND_TIME LIKE '%' || #{depPlandTime} || '%'
-      </if>
-      <![CDATA[ 
-      UNION
-      INSERT INTO FLIGHT_SEAT
-      WHERE 1=1
-      ]]>
-      <if test="seatGrade != null and seatGrade != ''">
-      	AND SEAT_GRADE LIKE '%' || #{seatGrade}|| '%'
-      </if> 
-      <![CDATA[ 
-      ORDER BY economyCharge DESC;
-      ]]>
+	<select id="searchRoundtrip" resultType="camelmap">
+		<![CDATA[
+		SELECT 
+    		A.VIHICLE_ID,
+    		A.AIRLINE_NM,
+    		A.DEP_AIRPORT_NM,
+    		A.DEP_CITY_NM,
+    		A.DEP_PLAND_TIME,
+    		A.ARR_AIRPORT_NM,
+    		A.ARR_CITY_NM,
+    		A.ARR_PLAND_TIME,
+    		A.ECONOMY_CHARGE,
+    		A.PRESTIGE_CHARGE,
+    		A.FIRST_CHARGE,
+    		B.SEAT_ID,
+    		B.SEAT_GRADE,
+    		B.SEAT_STATUS,
+    		B.TOT_COUNT_POSS
+		FROM FLIGHT_SCHEDULE A,
+     		 FLIGHT_SEAT B
+		WHERE A.VIHICLE_ID = B.VIHICLE_ID
+		AND ((DEP_AIRPORT_NM = #{depAirportCityNm} OR DEP_CITY_NM = #{depAirportCityNm})
+		OR (ARR_AIRPORT_NM = #{depAirportCityNm} OR ARR_CITY_NM = #{depAirportCityNm}))
+		OR ((DEP_AIRPORT_NM = #{arrAirportCityNm} OR DEP_CITY_NM = #{arrAirportCityNm})
+		OR (ARR_AIRPORT_NM = #{arrAirportCityNm} OR ARR_CITY_NM = #{arrAirportCityNm}))
+		AND TOT_COUNT_POSS >= #{totCount}
+		AND SEAT_GRADE = #{seatGrade}
+		AND SEAT_ID = 1
+		ORDER BY DEP_PLAND_TIME ASC
+		]]>
+	</select>
+
+	<!-- 상세 페이지 출력 (편도) -->
+	<select id="printOneway" resultType="camelmap">
+		<![CDATA[
+		SELECT 
+    		A.VIHICLE_ID,
+    		A.AIRLINE_NM,
+    		A.DEP_AIRPORT_NM,
+    		A.DEP_CITY_NM,
+    		A.DEP_PLAND_TIME,
+    		A.ARR_AIRPORT_NM,
+    		A.ARR_CITY_NM,
+    		A.ARR_PLAND_TIME,
+    		A.ECONOMY_CHARGE,
+    		A.PRESTIGE_CHARGE,
+    		A.FIRST_CHARGE,
+    		B.SEAT_ID,
+    		B.SEAT_GRADE,
+    		B.SEAT_STATUS,
+    		B.TOT_COUNT_POSS
+		FROM FLIGHT_SCHEDULE A,
+     		 FLIGHT_SEAT B
+		WHERE A.VIHICLE_ID = B.VIHICLE_ID
+		AND A.VIHICLE_ID = #{vihicleId}
+        AND SEAT_GRADE = #{seatGrade}
+		]]>
 	</select>
 </mapper>

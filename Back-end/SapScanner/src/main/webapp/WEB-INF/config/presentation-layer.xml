@@ -11,7 +11,10 @@
       http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<context:component-scan
-		base-package="sap.scanner.controller.web">
+		base-package="sap.scanner.controller">
+	</context:component-scan>
+	<context:component-scan
+		base-package="sap.scanner.util">
 	</context:component-scan>
 
 	<mvc:annotation-driven></mvc:annotation-driven>
@@ -38,6 +41,12 @@
 			<property name="paramName" value="lang" />
 		</bean>
 	</mvc:interceptors>
+
+	<!-- 업로드 패스 설정 -->
+	<bean class="java.lang.String" id="uploadPath">
+		<constructor-arg
+			value="D:\DEV2\upload"></constructor-arg>
+	</bean>
 
 	<!-- 파일 업로드 설정 -->
 	<bean id="multilpartResolver"

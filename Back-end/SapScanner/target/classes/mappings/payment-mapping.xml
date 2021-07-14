@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PaymentDAO">
+
+	<!-- 결제 정보 등록 -->
+	<insert id="insertPaymentInfo" parameterType="payment">
+      <![CDATA[
+            INSERT INTO USER_RESERVATION
+            (R_IDX, R_USER_NUM, R_NAME, R_DATE, PRICE, R_CREDIT)
+            VALUES(#{rIdx}, #{rUserNum}, #{rName}, 
+            TO_DATE(#{rDate}, 'yyyy-mm-dd hh24:mi'), #{price}, #{rCredit})      
+      ]]>
+	</insert>
+
+</mapper>

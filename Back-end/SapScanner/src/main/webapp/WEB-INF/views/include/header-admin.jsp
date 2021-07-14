@@ -13,24 +13,46 @@
 <!-- Favicon -->
 <link rel="icon" href="images/favicon.png">
 
+<!-- ajax 수정/삭제 버튼 jQuery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var formObj = $("form[name='readForm']");
+		
+		// 수정
+		/* $(".update_btn").on("click", function(){
+			formObj.attr("action", "/admin/updateSchedule.do");
+			formObj.attr("method", "post");
+			formObj.submit();
+		}) */
+		
+		// 삭제
+		$(".delete_btn").on("click", function(){
+			formObj.attr("action", "/admin/deleteSchedule.do");
+			formObj.attr("method", "get");
+			formObj.submit();
+		})
+	})
+</script>
+
 <!-- Google Fonts -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
 
 <!-- Template CSS Files -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/bootstrap-select.min.css">
-<link rel="stylesheet" href="css/line-awesome.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
-<link rel="stylesheet" href="css/daterangepicker.css">
-<link rel="stylesheet" href="css/animate.min.css">
-<link rel="stylesheet" href="css/animated-headline.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/flag-icon.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/line-awesome.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/daterangepicker.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/animated-headline.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/flag-icon.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 
 <body class="section-bg">
@@ -56,7 +78,7 @@
 			<div class="author-content">
 				<div class="d-flex align-items-center">
 					<div class="author-img avatar-sm">
-						<img src="images/admin.png" alt="testimonial image">
+						<img src="${pageContext.request.contextPath}/images/admin.png" alt="testimonial image">
 					</div>
 					<div class="author-bio">
 						<h4 class="author__title">관리자 페이지</h4>
@@ -66,23 +88,23 @@
 			</div>
 			<div class="sidebar-menu-wrap">
 				<ul class="sidebar-menu toggle-menu list-items">
-					<li><a href="admin-dashboard-reservation.do"><i
+					<li><a href="${pageContext.request.contextPath}/admin/admin-dashboard-reservation.do"><i
 							class="la la-list mr-2 text-color-2"></i>예약</a></li>
-					<li><a href="admin-dashboard-user.do"><i
+				<%-- 	<li><a href="${pageContext.request.contextPath}/admin/admin-dashboard-user.do"><i
 							class="la la-users mr-2 text-color-3"></i>고객</a></li>
-					<li><a href="admin-dashboard-review.do"><i
-							class="la la-star mr-2 text-color-5"></i>리뷰</a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/admin-dashboard-review.do"><i
+							class="la la-star mr-2 text-color-5"></i>리뷰</a></li> --%>
 					<li><span class="side-menu-icon toggle-menu-icon"> <i
 							class="la la-angle-down"></i>
 					</span> <a href="#"><i class="la la-area-chart mr-2 text-color-8"></i>호텔/항공
 							관리</a>
 						<ul class="toggle-drop-menu">
-							<li><a href="admin-dashboard-flying.do">항공</a></li>
-							<li><a href="admin-dahsboard-hotel.do">호텔</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/admin-dashboard-flying-list.do">항공</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/admin-hotel-list.do">호텔</a></li>
 						</ul></li>					
-					<li><a href="admin-dashboard-setting.do"><i
-							class="la la-cog mr-2 text-color-10"></i>설정</a></li>
-					<li><a href="index.jsp"><i
+					<%-- <li><a href="${pageContext.request.contextPath}/admin/admin-dashboard-setting.do"><i
+							class="la la-cog mr-2 text-color-10"></i>설정</a></li> --%>
+					<li><a href="${pageContext.request.contextPath}/logout.do"><i
 							class="la la-power-off mr-2 text-color-11"></i>로그아웃</a></li>
 				</ul>
 			</div>

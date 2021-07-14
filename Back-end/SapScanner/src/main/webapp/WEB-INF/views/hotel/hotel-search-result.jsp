@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@include file="../include/header.jsp"%>
+<%@include file="../include/header-search.jsp"%>
 <!-- Header -->
 <!-- ================================
     START BREADCRUMB AREA
@@ -664,4 +664,4 @@
     END CARD AREA
 ================================= -->
 <!-- Footer -->
-<%@include file="../include/footer.jsp"%>
+<%@include file="../include/footer-search.jsp"%>
